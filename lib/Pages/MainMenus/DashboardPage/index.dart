@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/SubMenus/AddConsumeListPages/index.dart';
+import 'package:kumande/Pages/SubMenus/AddConsumePages/index.dart';
+import 'package:kumande/Pages/SubMenus/ConsumeListPages/index.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPages/index.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key key}) : super(key: key);
@@ -32,10 +36,17 @@ class _DashboardPageState extends State<DashboardPage> {
                         margin: const EdgeInsets.only(bottom: 10, left: 10),
                         decoration: BoxDecoration(
                           color: successBg,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
                         ),
                         child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AddConsumePage()),
+                            );
+                          },
                           icon: const Icon(
                             Icons.add,
                             size: 22,
@@ -52,10 +63,18 @@ class _DashboardPageState extends State<DashboardPage> {
                         margin: const EdgeInsets.only(bottom: 10, left: 10),
                         decoration: BoxDecoration(
                           color: successBg,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
                         ),
                         child: TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AddConsumeListPage()),
+                            );
+                          },
                           icon: const Icon(
                             Icons.add,
                             size: 22,
@@ -72,10 +91,24 @@ class _DashboardPageState extends State<DashboardPage> {
                 SizedBox(
                     width: fullWidth * 0.53,
                     child: Column(children: [
-                      getDashboardContainer(fullWidth, 14, "Consume List",
-                          "Collection.png", containerBgThird, warningBg),
-                      getDashboardContainer(fullWidth, 3, "Statistics",
-                          "Statistics.png", primaryBg, containerBgSecondary)
+                      getDashboardContainer(
+                          fullWidth,
+                          14,
+                          "Consume List",
+                          "Collection.png",
+                          containerBgThird,
+                          warningBg,
+                          context,
+                          const ConsumeListPage()),
+                      getDashboardContainer(
+                          fullWidth,
+                          3,
+                          "Statistics",
+                          "Statistics.png",
+                          primaryBg,
+                          containerBgSecondary,
+                          context,
+                          const StatisticPage())
                     ]))
               ])
         ],

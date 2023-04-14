@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-Widget getDashboardContainer(
-    double width, int total, String title, String url, colorStart, colorEnd) {
+Widget getDashboardContainer(double width, int total, String title, String url,
+    colorStart, colorEnd, ctx, route) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        ctx,
+        MaterialPageRoute(builder: (context) => route),
+      );
+    },
     child: Container(
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.only(bottom: 10, right: 10),
