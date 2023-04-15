@@ -50,7 +50,10 @@ class _AddConsumeListPageState extends State<AddConsumeListPage> {
             thickness: 1,
           ),
           getInputLabel("My Tag", primaryBg, textLg),
-          generateTag(tagListDummy, _refreshPage, "tag_consume_list")
+          generateTag(tagListDummy, _refreshPage, "tag_consume_list"),
+          const SizedBox(height: 10),
+          generateSelectedTag(
+              selectedTagConsumeList, _refreshPage, "tag_consume_list")
         ],
       ),
       floatingActionButton: FloatingActionButton(

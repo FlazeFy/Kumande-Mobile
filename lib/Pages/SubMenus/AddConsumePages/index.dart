@@ -129,7 +129,8 @@ class _AddConsumePageState extends State<AddConsumePage> {
             thickness: 1,
           ),
           getInputLabel("My Tag", primaryBg, textLg),
-          generateTag(tagListDummy, _refreshPage, "tag_consume")
+          generateTag(tagListDummy, _refreshPage, "tag_consume"),
+          generateSelectedTag(selectedTagConsume, _refreshPage, "tag_consume")
         ],
       ),
       floatingActionButton: FloatingActionButton(
