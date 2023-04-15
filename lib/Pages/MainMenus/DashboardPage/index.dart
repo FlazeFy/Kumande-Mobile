@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/dashboard.dart';
+import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumeListPages/index.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumePages/index.dart';
@@ -103,7 +104,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       getDashboardContainer(
                           fullWidth,
                           3,
-                          "Statistics",
+                          slctConsumeFrom,
                           "Statistics.png",
                           primaryBg,
                           containerBgSecondary,
@@ -112,12 +113,6 @@ class _DashboardPageState extends State<DashboardPage> {
                     ]))
               ])
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: successBg,
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

@@ -1,3 +1,4 @@
+// Chart
 class PieData {
   PieData(this.xData, this.yData, [this.text]);
   final String xData;
@@ -11,3 +12,32 @@ class LineData {
   final String month;
   final double total;
 }
+
+// Consume
+String slctConsumeFrom = "GoFood";
+List<String> optionsConsumeFrom = [
+  "GoFood",
+  "GrabFood",
+  "ShopeeFood",
+  "Dine-In",
+  "Take Away",
+];
+
+String slctConsumeType = "Food";
+List<String> optionsConsumeType = [
+  "Food",
+  "Drink",
+  "Snack",
+];
+
+String slctConsumePaymentMethod = "GoPay";
+List<String> optionsConsumePaymentMethod = [
+  "GoPay",
+  "Ovo",
+  "Dana",
+  "Link Aja",
+  "MBanking",
+  "Cash",
+  "Gift",
+  "Cuppon",
+];

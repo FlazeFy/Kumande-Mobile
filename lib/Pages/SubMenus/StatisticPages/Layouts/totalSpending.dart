@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/Variables/global.dart';
-import 'package:kumande/Modules/Variables/style.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class TotalSpendingLayout extends StatefulWidget {
