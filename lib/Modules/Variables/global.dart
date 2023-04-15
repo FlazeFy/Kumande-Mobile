@@ -41,3 +41,14 @@ List<String> optionsConsumePaymentMethod = [
   "Gift",
   "Cuppon",
 ];
+
+List<String> selectedTagConsume = [];
+List<String> selectedTagConsumeList = [];
+
+List<String> tagListDummy = [
+  "Cheap",
+  "Tasty",
+  "Spicy",
+  "Fast Food",
+  "Healthy",
+];
