@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class MostConsumeTypeLayout extends StatefulWidget {
-  const MostConsumeTypeLayout({Key key}) : super(key: key);
+class MostConsumeType extends StatefulWidget {
+  const MostConsumeType({Key key}) : super(key: key);
 
   @override
-  State<MostConsumeTypeLayout> createState() => _MostConsumeTypeLayoutState();
+  State<MostConsumeType> createState() => _MostConsumeTypeState();
 }
 
-class _MostConsumeTypeLayoutState extends State<MostConsumeTypeLayout> {
+class _MostConsumeTypeState extends State<MostConsumeType> {
   List<PieData> data2 = [
     PieData('Food', 16),
     PieData('Drink', 8),

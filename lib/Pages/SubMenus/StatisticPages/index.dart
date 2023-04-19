@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPages/Layouts/mostConsumeFrom.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPages/Layouts/mostConsumeType.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPages/Layouts/totalSpending.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPages/Usecases/mostConsumeFrom.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPages/Usecases/mostConsumeType.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPages/Usecases/totalSpending.dart';
 
 class StatisticPage extends StatefulWidget {
   const StatisticPage({Key key}) : super(key: key);
@@ -18,13 +19,10 @@ class _StatisticPageState extends State<StatisticPage> {
     double fullWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: getAppbar("Statistic"),
       body: ListView(
-        padding: EdgeInsets.only(top: fullHeight * 0.06),
-        children: const [
-          MostConsumeTypeLayout(),
-          MostConsumeFromLayout(),
-          TotalSpendingLayout()
-        ],
+        padding: EdgeInsets.only(top: 10),
+        children: const [MostConsumeType(), MostConsumeFrom(), TotalSpending()],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,

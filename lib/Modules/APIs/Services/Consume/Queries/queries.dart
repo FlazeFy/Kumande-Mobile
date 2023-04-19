@@ -15,4 +15,14 @@ class QueriesConsumeService {
       return null;
     }
   }
+
+  Future<List<QueriesConsumeFromTotalModel>> getTotalConsumeByFrom() async {
+    final response =
+        await client.get(Uri.parse("$baseUrl/api/v1/consume/total/byfrom"));
+    if (response.statusCode == 200) {
+      return QueriesConsumeFromTotalModelFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
 }

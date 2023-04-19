@@ -104,7 +104,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       getDashboardContainer(
                           fullWidth,
                           3,
-                          slctConsumeFrom,
+                          "Statistic",
                           "Statistics.png",
                           primaryBg,
                           containerBgSecondary,

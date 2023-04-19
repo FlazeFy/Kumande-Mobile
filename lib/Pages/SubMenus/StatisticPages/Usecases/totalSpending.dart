@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class TotalSpendingLayout extends StatefulWidget {
-  const TotalSpendingLayout({Key key}) : super(key: key);
+class TotalSpending extends StatefulWidget {
+  const TotalSpending({Key key}) : super(key: key);
 
   @override
-  State<TotalSpendingLayout> createState() => _TotalSpendingLayoutState();
+  State<TotalSpending> createState() => _TotalSpendingState();
 }
 
-class _TotalSpendingLayoutState extends State<TotalSpendingLayout> {
+class _TotalSpendingState extends State<TotalSpending> {
   List<LineData> data = [
     LineData('Jan', 35),
     LineData('Feb', 28),
@@ -25,6 +25,10 @@ class _TotalSpendingLayoutState extends State<TotalSpendingLayout> {
 
     return Container(
         margin: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
         child: SfCartesianChart(
             primaryXAxis: CategoryAxis(),
             title: ChartTitle(text: 'Total Spending 2023'),
@@ -37,10 +41,6 @@ class _TotalSpendingLayoutState extends State<TotalSpendingLayout> {
                   yValueMapper: (LineData dt, _) => dt.total,
                   name: 'Total',
                   dataLabelSettings: const DataLabelSettings(isVisible: true))
-            ]),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ));
+            ]));
   }
 }
