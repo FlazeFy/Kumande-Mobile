@@ -31,17 +31,17 @@ class _MostConsumeFromState extends State<MostConsumeFrom> {
       child: FutureBuilder(
         future: apiService.getTotalConsumeByFrom(),
         builder: (BuildContext context,
-            AsyncSnapshot<List<QueriesConsumeFromTotalModel>> snapshot) {
+            AsyncSnapshot<List<QueriesConsumePieChartModel>> snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text(
                   "Something wrong with message: ${snapshot.error.toString()}"),
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
-            List<QueriesConsumeFromTotalModel> contents = snapshot.data;
+            List<QueriesConsumePieChartModel> contents = snapshot.data;
 
             contents.forEach((content) {
-              String label = content.consumeFrom;
+              String label = content.ctx;
               int total = content.total;
               PieData pieData = PieData(label, total);
               chartData.add(pieData);

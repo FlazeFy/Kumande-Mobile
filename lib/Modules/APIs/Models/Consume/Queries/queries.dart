@@ -59,23 +59,23 @@ List<QueriesConsumeModel> QueriesConsumeModelFromJsonWPaginate(
 }
 
 // Usecase get total consume by from
-class QueriesConsumeFromTotalModel {
-  String consumeFrom;
+class QueriesConsumePieChartModel {
+  String ctx;
   int total;
 
-  QueriesConsumeFromTotalModel({this.consumeFrom, this.total});
+  QueriesConsumePieChartModel({this.ctx, this.total});
 
-  factory QueriesConsumeFromTotalModel.fromJson(Map<String, dynamic> map) {
-    return QueriesConsumeFromTotalModel(
-      consumeFrom: map["consume_from"],
+  factory QueriesConsumePieChartModel.fromJson(Map<String, dynamic> map) {
+    return QueriesConsumePieChartModel(
+      ctx: map["context"],
       total: map["total"],
     );
   }
 }
 
-List<QueriesConsumeFromTotalModel> QueriesConsumeFromTotalModelFromJson(
+List<QueriesConsumePieChartModel> QueriesConsumePieChartModelFromJson(
     String jsonData) {
   final data = json.decode(jsonData);
-  return List<QueriesConsumeFromTotalModel>.from(
-      data['data'].map((item) => QueriesConsumeFromTotalModel.fromJson(item)));
+  return List<QueriesConsumePieChartModel>.from(
+      data['data'].map((item) => QueriesConsumePieChartModel.fromJson(item)));
 }

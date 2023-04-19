@@ -16,11 +16,21 @@ class QueriesConsumeService {
     }
   }
 
-  Future<List<QueriesConsumeFromTotalModel>> getTotalConsumeByFrom() async {
+  Future<List<QueriesConsumePieChartModel>> getTotalConsumeByFrom() async {
     final response =
         await client.get(Uri.parse("$baseUrl/api/v1/consume/total/byfrom"));
     if (response.statusCode == 200) {
-      return QueriesConsumeFromTotalModelFromJson(response.body);
+      return QueriesConsumePieChartModelFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<QueriesConsumePieChartModel>> getTotalConsumeByType() async {
+    final response =
+        await client.get(Uri.parse("$baseUrl/api/v1/consume/total/bytype"));
+    if (response.statusCode == 200) {
+      return QueriesConsumePieChartModelFromJson(response.body);
     } else {
       return null;
     }
