@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
-import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
 Widget getInputTextMain(ctrl, String title, int len) {
@@ -13,7 +11,8 @@ Widget getInputTextMain(ctrl, String title, int len) {
       maxLength: len,
       style: TextStyle(fontSize: textSm),
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
           hintText: title,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -40,7 +39,8 @@ Widget getInputDescMain(ctrl, String title, int len, int min, int max) {
       maxLines: max,
       style: TextStyle(fontSize: textSm),
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           hintText: title,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -70,7 +70,8 @@ Widget getInputNumberMain(
       ),
       onChanged: (value) {},
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
           labelText: title,
           hintText: title,
           enabledBorder: OutlineInputBorder(

@@ -55,7 +55,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                           label: const Text(
                             "Add Consume",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                         )),
                     Container(
