@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kumande/Components/Forms/input.dart';
+import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Components/Navbars/tabbar.dart';
+import 'package:kumande/Components/Typography/text.dart';
+import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -28,15 +32,59 @@ class _HistoryPageState extends State<HistoryPage>
         child: ListView(
           padding: EdgeInsets.only(top: fullHeight * 0.06),
           children: [
-            getTabBar(fullHeight, tabController, "Recent Consume", textPrimary)
+            getTabBar(fullHeight, tabController, "Recent Consume", textPrimary,
+                tabcolHistoryConsume)
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Filter Consume'),
+                  content: Container(
+                    height: 200,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          getInputLabel("Order By", textPrimary, textSm),
+                          getDropDownMain(
+                              slctConsumeFilterOrder, optionsConsumeFilterOrder,
+                              (String newValue) {
+                            setState(() {
+                              slctConsumeFilterOrder = newValue;
+                            });
+                          }),
+                        ]),
+                  ),
+                  actions: <Widget>[
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        )),
+                        backgroundColor:
+                            MaterialStatePropertyAll<Color>(successBg),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => BottomBar()),
+                        );
+                        setState(() {
+                          page = 1;
+                        });
+                      },
+                      child: Text("Apply Changes",
+                          style: TextStyle(fontSize: textSm, color: whiteBg)),
+                    )
+                  ],
+                )),
+        tooltip: 'Filter',
+        child: const Icon(Icons.settings),
       ),
     );
   }

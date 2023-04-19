@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/DashboardPage/index.dart';
 import 'package:kumande/Pages/MainMenus/HistoryPage/index.dart';
@@ -14,7 +15,6 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _page = 0;
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   @override
@@ -28,7 +28,7 @@ class _BottomBarState extends State<BottomBar> {
     return Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
-          index: 0,
+          index: page,
           height: 60.0,
           items: <Widget>[
             Icon(Icons.dashboard, size: iconLG, color: whiteBg),
@@ -43,11 +43,11 @@ class _BottomBarState extends State<BottomBar> {
           animationDuration: const Duration(milliseconds: 400),
           onTap: (index) {
             setState(() {
-              _page = index;
+              page = index;
             });
           },
           letIndexChange: (index) => true,
         ),
-        body: widgetOptions.elementAt(_page));
+        body: widgetOptions.elementAt(page));
   }
 }

@@ -1,4 +1,6 @@
 // Chart
+import 'package:kumande/Pages/MainMenus/HistoryPage/Usecases/GetAllConsumeWPagination.dart';
+
 class PieData {
   PieData(this.xData, this.yData, [this.text]);
   final String xData;
@@ -30,6 +32,12 @@ List<String> optionsConsumeType = [
   "Snack",
 ];
 
+String slctConsumeFilterOrder = "Desc";
+List<String> optionsConsumeFilterOrder = [
+  "Asc",
+  "Desc",
+];
+
 String slctConsumePaymentMethod = "GoPay";
 List<String> optionsConsumePaymentMethod = [
   "GoPay",
@@ -52,3 +60,13 @@ List<String> tagListDummy = [
   "Fast Food",
   "Healthy",
 ];
+
+var tabcolHistoryConsume = [
+  {"title": "All", "class": GetAllConsumeWPagination(type: "All")},
+  {"title": "Food", "class": GetAllConsumeWPagination(type: "Food")},
+  {"title": "Drink", "class": GetAllConsumeWPagination(type: "Drink")},
+  {"title": "Snack", "class": GetAllConsumeWPagination(type: "Snack")}
+];
+
+// Navigation
+int page = 0;

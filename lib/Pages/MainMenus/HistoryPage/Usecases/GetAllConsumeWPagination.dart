@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/consume.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
 import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries.dart';
+import 'package:kumande/Modules/Variables/global.dart';
 
 class GetAllConsumeWPagination extends StatefulWidget {
-  const GetAllConsumeWPagination({Key key}) : super(key: key);
+  GetAllConsumeWPagination({Key key, this.type}) : super(key: key);
+  String type;
 
   @override
   _GetAllConsumeWPagination createState() => _GetAllConsumeWPagination();
@@ -28,7 +30,7 @@ class _GetAllConsumeWPagination extends State<GetAllConsumeWPagination>
     return SafeArea(
       maintainBottomViewPadding: false,
       child: FutureBuilder(
-        future: apiService.getAllConsume(),
+        future: apiService.getAllConsume(widget.type, slctConsumeFilterOrder),
         builder: (BuildContext context,
             AsyncSnapshot<List<QueriesConsumeModel>> snapshot) {
           if (snapshot.hasError) {

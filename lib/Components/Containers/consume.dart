@@ -8,6 +8,7 @@ Widget getConsumeHistoryContainer(
     title, price, comment, type, from, detail, tag) {
   return Container(
       padding: EdgeInsets.all(paddingContainerLG),
+      margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
@@ -33,7 +34,7 @@ Widget getConsumeHistoryContainer(
               semanticLabel: 'ss',
             ),
             const SizedBox(width: 10),
-            Text(title,
+            Text(limitString(title, 20),
                 style: TextStyle(color: primaryBg, fontWeight: titleWeight)),
             const Spacer(),
             Text(from, style: TextStyle(color: textSecondary)),
