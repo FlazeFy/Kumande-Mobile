@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Dialogs/failed.dart';
 import 'package:kumande/Components/Forms/input.dart';
@@ -5,7 +7,9 @@ import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Components/Typography/text.dart';
 import 'package:kumande/Modules/APIs/Models/Auth/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/Auth/Commands/commands.dart';
+import 'package:kumande/Modules/Firebases/Auths/auth.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PostLogin extends StatefulWidget {
   @override
@@ -13,7 +17,7 @@ class PostLogin extends StatefulWidget {
 }
 
 class _PostLoginState extends State<PostLogin> {
-  TextEditingController usernameCtrl = TextEditingController();
+  TextEditingController emailCtrl = TextEditingController();
   TextEditingController passCtrl = TextEditingController();
   LoginCommandsService apiService;
 
@@ -39,8 +43,8 @@ class _PostLoginState extends State<PostLogin> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          getInputLabel("Username", textPrimary, textMd),
-          getInputTextMain(usernameCtrl, "Username", 35),
+          getInputLabel("Email", textPrimary, textMd),
+          getInputTextMain(emailCtrl, "email", 35),
           getInputLabel("Password", textPrimary, textMd),
           getInputTextMain(passCtrl, "Password", 35),
           Container(
@@ -56,12 +60,12 @@ class _PostLoginState extends State<PostLogin> {
                   ),
                   onPressed: () async {
                     LoginModel data = LoginModel(
-                      username: usernameCtrl.text,
+                      email: emailCtrl.text,
                       password: passCtrl.text,
                     );
 
                     //Validator
-                    if (data.username.isNotEmpty && data.password.isNotEmpty) {
+                    if (data.email.isNotEmpty && data.password.isNotEmpty) {
                       apiService.addLogin(data).then((response) {
                         setState(() => _isLoading = false);
                         var status = response[0]['message'];
@@ -69,6 +73,15 @@ class _PostLoginState extends State<PostLogin> {
 
                         if (status == "success") {
                           //Do firebase auth
+                          try {
+                            AuthModule().signInEmailPass(
+                                email: data.email, password: data.password);
+                          } on FirebaseAuthException catch (e) {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    FailedDialog(text: e));
+                          }
 
                           Navigator.push(
                             context,
@@ -83,7 +96,7 @@ class _PostLoginState extends State<PostLogin> {
                               builder: (BuildContext context) =>
                                   FailedDialog(text: body));
 
-                          usernameCtrl.clear();
+                          emailCtrl.clear();
                           passCtrl.clear();
 
                           print(response);
@@ -95,6 +108,9 @@ class _PostLoginState extends State<PostLogin> {
                           builder: (BuildContext context) => FailedDialog(
                               text: "Login failed, field can't be empty"));
                     }
+                    final prefs = await SharedPreferences.getInstance();
+                    final token = prefs.getString('token_key');
+                    print(token);
                   },
                   child: const Text("Sign In", style: TextStyle(fontSize: 15))))
         ],

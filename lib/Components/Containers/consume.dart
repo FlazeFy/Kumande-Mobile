@@ -45,9 +45,8 @@ Widget getConsumeHistoryContainer(
         ),
         const SizedBox(height: 10),
         Text(getIsNull(comment), style: TextStyle(color: textSecondary)),
-        const SizedBox(height: 10),
-        generateConsumeDetail(detail),
         const SizedBox(height: 5),
+        generateConsumeDetail(detail),
         generateTagShow(tag)
       ]));
 }

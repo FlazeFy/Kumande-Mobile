@@ -11,7 +11,7 @@ Widget generateTagShow(list) {
         spacing: 5,
         children: list.map<Widget>((tag) {
           return Container(
-              margin: const EdgeInsets.only(bottom: 10),
+              margin: const EdgeInsets.only(bottom: 2),
               child: ElevatedButton(
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

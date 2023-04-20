@@ -2,13 +2,13 @@ import 'dart:convert';
 
 // Usecase login
 class LoginModel {
-  String username;
+  String email;
   String password;
 
-  LoginModel({this.username, this.password});
+  LoginModel({this.email, this.password});
 
   Map<String, dynamic> toJson() {
-    return {"username": username, "password": password};
+    return {"email": email, "password": password};
   }
 }
 

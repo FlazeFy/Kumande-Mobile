@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
 import 'package:kumande/Modules/APIs/Models/Auth/Commands/commands.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginCommandsService {
   final String baseUrl = "http://10.0.2.2:8000";
@@ -17,6 +18,9 @@ class LoginCommandsService {
     var responseData = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token_key', responseData['token']);
+
       return [
         {
           "message": "success",
