@@ -22,7 +22,7 @@ Widget getTabBar(height, ctrl, title, titleColor, col) {
           })),
     ),
     SizedBox(
-      height: height * 0.7,
+      height: height * 0.8,
       child: TabBarView(
         controller: ctrl,
         children: List.generate(col.length, (index) {

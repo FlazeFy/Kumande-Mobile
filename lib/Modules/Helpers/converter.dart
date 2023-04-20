@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:intl/intl.dart';
 
 getIsNull(val) {
@@ -23,5 +25,25 @@ String limitString(String str, int maxLength) {
     return str;
   } else {
     return "${str.substring(0, maxLength)}...";
+  }
+}
+
+String getMessageResponseFromObject(val) {
+  var res = "";
+
+  if (val is String) {
+    return val;
+  } else {
+    var usernameErr = val['username'];
+    var passErr = val['password'];
+
+    if (usernameErr != null) {
+      res += "${usernameErr.join('\n')}";
+    }
+    if (passErr != null) {
+      res += "${passErr.join('\n')}";
+    }
+
+    return res;
   }
 }

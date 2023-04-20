@@ -17,6 +17,7 @@ double iconMD = 22.0;
 double iconXSM = 12.5;
 
 // Text Size
+double textJumbo = 33.0;
 double textLg = 19.0;
 double textMd = 16.0;
 double textSm = 13.5;
