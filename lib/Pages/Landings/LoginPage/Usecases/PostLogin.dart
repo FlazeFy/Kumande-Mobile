@@ -64,14 +64,11 @@ class _PostLoginState extends State<PostLogin> {
                     if (data.username.isNotEmpty && data.password.isNotEmpty) {
                       apiService.addLogin(data).then((response) {
                         setState(() => _isLoading = false);
-                        var status = response[0]['status'];
+                        var status = response[0]['message'];
                         var body = response[0]['body'];
 
                         if (status == "success") {
-                          // showDialog<String>(
-                          //     context: context,
-                          //     builder: (BuildContext context) =>
-                          //         FailedDialog(text: "Create data failed"));
+                          //Do firebase auth
 
                           Navigator.push(
                             context,
@@ -80,7 +77,6 @@ class _PostLoginState extends State<PostLogin> {
                           );
 
                           print(response);
-                          //Do firebase auth
                         } else {
                           showDialog<String>(
                               context: context,

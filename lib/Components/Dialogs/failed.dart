@@ -21,22 +21,21 @@ class _FailedDialog extends State<FailedDialog> {
       title: const Text('Error'),
       content: SizedBox(
         width: fullWidth,
-        height: 210,
+        height: 300,
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(60),
-                child: Image.asset('assets/icons/Sorry.png',
-                    width: fullWidth * 0.4),
+                child: Image.asset('assets/icons/Sorry.png', width: 200),
               ),
               Container(
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(getMessageResponseFromObject(widget.text),
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: dangerBg,
-                          fontSize: textSm,
+                          fontSize: textMd - 1,
                           fontWeight: FontWeight.w500)))
             ]),
       ),

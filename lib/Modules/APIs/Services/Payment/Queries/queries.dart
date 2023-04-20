@@ -2,7 +2,7 @@ import 'package:http/http.dart' show Client;
 import 'package:kumande/Modules/APIs/Models/Payment/Queries/queries.dart';
 
 class QueriesPaymentService {
-  final String baseUrl = "http://127.0.0.1:8000";
+  final String baseUrl = "http://10.0.2.2:8000";
   Client client = Client();
 
   Future<List<QueriesPaymentLineChartModel>> getTotalSpendMonth(
