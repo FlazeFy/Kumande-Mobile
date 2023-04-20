@@ -27,7 +27,7 @@ class _StatisticPageState extends State<StatisticPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,
         onPressed: () {},
-        tooltip: 'Increment',
+        tooltip: 'Generate Chart',
         child: const Icon(Icons.add),
       ),
     );

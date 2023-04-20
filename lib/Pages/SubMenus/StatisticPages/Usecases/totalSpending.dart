@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kumande/Modules/APIs/Models/Payment/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Services/Payment/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -10,16 +12,51 @@ class TotalSpending extends StatefulWidget {
 }
 
 class _TotalSpendingState extends State<TotalSpending> {
-  List<LineData> data = [
-    LineData('Jan', 35),
-    LineData('Feb', 28),
-    LineData('Mar', 34),
-    LineData('Apr', 32),
-    LineData('May', 40)
-  ];
+  List<LineData> chartData = [];
+  QueriesPaymentService apiService;
+
+  @override
+  void initState() {
+    super.initState();
+    apiService = QueriesPaymentService();
+  }
 
   @override
   Widget build(BuildContext context) {
+    int year = DateTime.now().year;
+
+    return SafeArea(
+      maintainBottomViewPadding: false,
+      child: FutureBuilder(
+        future: apiService.getTotalSpendMonth(year),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<QueriesPaymentLineChartModel>> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                  "Something wrong with message: ${snapshot.error.toString()}"),
+            );
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            List<QueriesPaymentLineChartModel> contents = snapshot.data;
+
+            contents.forEach((content) {
+              String label = content.ctx;
+              int total = content.total;
+              LineData lineData = LineData(label, total.toDouble());
+              chartData.add(lineData);
+            });
+
+            return _buildListView(chartData);
+          } else {
+            return SizedBox();
+          }
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget _buildListView(List<LineData> contents) {
     double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
@@ -32,11 +69,11 @@ class _TotalSpendingState extends State<TotalSpending> {
         child: SfCartesianChart(
             primaryXAxis: CategoryAxis(),
             title: ChartTitle(text: 'Total Spending 2023'),
-            legend: Legend(isVisible: true),
+            legend: Legend(isVisible: false),
             tooltipBehavior: TooltipBehavior(enable: true),
             series: <ChartSeries<LineData, String>>[
               LineSeries<LineData, String>(
-                  dataSource: data,
+                  dataSource: chartData,
                   xValueMapper: (LineData dt, _) => dt.month,
                   yValueMapper: (LineData dt, _) => dt.total,
                   name: 'Total',
