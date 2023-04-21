@@ -1,15 +1,14 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
-import 'package:kumande/Modules/APIs/Models/Payment/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Models/Schedule/Queries/queries.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class QueriesPaymentService {
+class QueriesScheduleService {
   final String baseUrl = "http://10.0.2.2:8000";
   Client client = Client();
 
-  Future<List<QueriesPaymentLineChartModel>> getTotalSpendMonth(
-      int year) async {
+  Future<List<QueriesTodayScheduleModel>> getTodaySchedule(String day) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token_key');
     final header = {
@@ -18,11 +17,11 @@ class QueriesPaymentService {
     };
 
     final response = await client.get(
-      Uri.parse("$baseUrl/api/v1/payment/total/month/$year"),
+      Uri.parse("$baseUrl/api/v1/schedule/day/$day"),
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesPaymentLineChartModelFromJson(response.body);
+      return QueriesTodayScheduleModelFromJson(response.body);
     } else {
       return null;
     }

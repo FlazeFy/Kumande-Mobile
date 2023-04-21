@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/GetTodaySchedule.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumeListPages/index.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumePages/index.dart';
 import 'package:kumande/Pages/SubMenus/ConsumeListPages/index.dart';
@@ -60,7 +61,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     Container(
                         padding: const EdgeInsets.all(10),
                         width: fullWidth * 0.44,
-                        margin: const EdgeInsets.only(bottom: 10, left: 10),
+                        margin: const EdgeInsets.only(left: 10),
                         decoration: BoxDecoration(
                           color: successBg,
                           borderRadius:
@@ -85,7 +86,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         )),
-                    getScheduleContainer(fullHeight, fullWidth)
+                    GetTodaySchedule()
                   ]),
                 ),
                 const Spacer(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kumande/Modules/Variables/style.dart';
 
 Widget getDividerMini(clr) {
   return Divider(

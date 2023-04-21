@@ -43,7 +43,7 @@ class _HistoryPageState extends State<HistoryPage>
             context: context,
             builder: (BuildContext context) => AlertDialog(
                   title: const Text('Filter Consume'),
-                  content: Container(
+                  content: SizedBox(
                     height: 200,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

@@ -86,8 +86,6 @@ class _PostLoginState extends State<PostLogin> {
                             MaterialPageRoute(
                                 builder: (context) => const BottomBar()),
                           );
-
-                          print(response);
                         } else {
                           showDialog<String>(
                               context: context,
@@ -96,8 +94,6 @@ class _PostLoginState extends State<PostLogin> {
 
                           emailCtrl.clear();
                           passCtrl.clear();
-
-                          print(response);
                         }
                       });
                     } else {
@@ -108,7 +104,6 @@ class _PostLoginState extends State<PostLogin> {
                     }
                     final prefs = await SharedPreferences.getInstance();
                     final token = prefs.getString('token_key');
-                    print(token);
                   },
                   child: const Text("Sign In", style: TextStyle(fontSize: 15))))
         ],

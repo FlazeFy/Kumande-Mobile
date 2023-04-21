@@ -4,7 +4,7 @@ import 'package:kumande/Modules/Variables/style.dart';
 Widget getTabBar(height, ctrl, title, titleColor, col) {
   return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
     Container(
-        margin: EdgeInsets.only(left: 10),
+        margin: const EdgeInsets.only(left: 10),
         child: Text(title,
             style: TextStyle(
                 color: titleColor, fontSize: 20, fontWeight: FontWeight.bold))),

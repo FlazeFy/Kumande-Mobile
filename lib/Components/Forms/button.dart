@@ -4,7 +4,7 @@ import 'package:kumande/Modules/Variables/style.dart';
 
 Widget getButtonTag(title, Function onPress, call, res, bool isDeleted) {
   return Container(
-      margin: EdgeInsets.only(bottom: 2),
+      margin: const EdgeInsets.only(bottom: 2),
       child: ElevatedButton(
         onPressed: () {
           if (res == "tag_consume") {

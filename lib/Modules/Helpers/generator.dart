@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Components/Forms/button.dart';
 import 'package:kumande/Components/Typography/text.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:intl/intl.dart';
 
 // Show only
 Widget generateTagShow(list) {
@@ -92,4 +93,10 @@ Widget generateSelectedTag(list, call, res) {
   } else {
     return const SizedBox();
   }
+}
+
+getTodayDayString() {
+  DateTime now = DateTime.now();
+  String day = DateFormat('E').format(now);
+  return day;
 }
