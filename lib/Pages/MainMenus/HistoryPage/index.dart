@@ -72,7 +72,8 @@ class _HistoryPageState extends State<HistoryPage>
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => BottomBar()),
+                          MaterialPageRoute(
+                              builder: (context) => const BottomBar()),
                         );
                         setState(() {
                           page = 1;

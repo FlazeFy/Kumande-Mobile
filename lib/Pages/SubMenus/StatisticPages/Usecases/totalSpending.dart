@@ -48,7 +48,7 @@ class _TotalSpendingState extends State<TotalSpending> {
 
             return _buildListView(chartData);
           } else {
-            return SizedBox();
+            return const SizedBox();
           }
         },
       ),

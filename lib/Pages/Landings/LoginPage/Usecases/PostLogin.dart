@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Dialogs/failed.dart';
@@ -72,7 +71,6 @@ class _PostLoginState extends State<PostLogin> {
                         var body = response[0]['body'];
 
                         if (status == "success") {
-                          //Do firebase auth
                           try {
                             AuthModule().signInEmailPass(
                                 email: data.email, password: data.password);

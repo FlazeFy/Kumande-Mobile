@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Pages/Landings/LoginPage/index.dart';
 
 bool shouldUseFirestoreEmulator = false;

@@ -21,7 +21,7 @@ class _StatisticPageState extends State<StatisticPage> {
     return Scaffold(
       appBar: getAppbar("Statistic"),
       body: ListView(
-        padding: EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 10),
         children: const [MostConsumeType(), MostConsumeFrom(), TotalSpending()],
       ),
       floatingActionButton: FloatingActionButton(

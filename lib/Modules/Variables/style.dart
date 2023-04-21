@@ -14,6 +14,7 @@ var textSecondary = const Color.fromARGB(255, 121, 121, 121);
 // Icon Size
 double iconLG = 26.0;
 double iconMD = 22.0;
+double iconSMD = 16.0;
 double iconXSM = 12.5;
 
 // Text Size

@@ -42,7 +42,7 @@ class _GetAllConsumeWPagination extends State<GetAllConsumeWPagination>
             List<QueriesConsumeModel> contents = snapshot.data;
             return _buildListView(contents);
           } else {
-            return SizedBox();
+            return const SizedBox();
           }
         },
       ),

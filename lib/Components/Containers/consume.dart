@@ -8,7 +8,7 @@ Widget getConsumeHistoryContainer(
     title, price, comment, type, from, detail, tag) {
   return Container(
       padding: EdgeInsets.all(paddingContainerLG),
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,

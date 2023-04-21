@@ -46,7 +46,7 @@ class _MostConsumeTypeState extends State<MostConsumeType> {
 
             return _buildListView(chartData);
           } else {
-            return SizedBox();
+            return const SizedBox();
           }
         },
       ),
