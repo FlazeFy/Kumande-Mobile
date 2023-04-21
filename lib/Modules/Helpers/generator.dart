@@ -100,3 +100,14 @@ getTodayDayString() {
   String day = DateFormat('E').format(now);
   return day;
 }
+
+getDateNowInt(String type) {
+  var now = DateTime.now();
+  if (type == "year") {
+    return now.year;
+  } else if (type == "month") {
+    return now.month;
+  } else if (type == "day") {
+    return now.day;
+  }
+}

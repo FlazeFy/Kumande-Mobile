@@ -86,21 +86,7 @@ class _GetTodaySchedule extends State<GetTodaySchedule>
             padding: const EdgeInsets.only(left: 5),
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      child: Image.asset('assets/icons/Breakfast.png',
-                          width: fullWidth * 0.125),
-                    ),
-                    Text("Breakfast",
-                        style: TextStyle(
-                            color: primaryBg,
-                            fontSize: textMd,
-                            fontWeight: subTitleWeight))
-                  ],
-                ),
+                getScheduleTextIcon(fullWidth, "Breakfast"),
                 Column(
                     children: contents.map((val) {
                   if (val.scheduleTime[0]['category'] == "Breakfast") {
@@ -118,21 +104,7 @@ class _GetTodaySchedule extends State<GetTodaySchedule>
             padding: const EdgeInsets.only(left: 5),
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      child: Image.asset('assets/icons/Lunch.png',
-                          width: fullWidth * 0.125),
-                    ),
-                    Text("Lunch",
-                        style: TextStyle(
-                            color: primaryBg,
-                            fontSize: textMd,
-                            fontWeight: subTitleWeight))
-                  ],
-                ),
+                getScheduleTextIcon(fullWidth, "Lunch"),
                 Column(
                     children: contents.map((val) {
                   if (val.scheduleTime[0]['category'] == "Lunch") {
@@ -150,21 +122,7 @@ class _GetTodaySchedule extends State<GetTodaySchedule>
             padding: const EdgeInsets.only(left: 5),
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      child: Image.asset('assets/icons/Dinner.png',
-                          width: fullWidth * 0.125),
-                    ),
-                    Text("Dinner",
-                        style: TextStyle(
-                            color: primaryBg,
-                            fontSize: textMd,
-                            fontWeight: subTitleWeight))
-                  ],
-                ),
+                getScheduleTextIcon(fullWidth, "Dinner"),
                 Column(
                     children: contents.map((val) {
                   if (val.scheduleTime[0]['category'] == "Dinner") {

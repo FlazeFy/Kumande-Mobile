@@ -20,6 +20,12 @@ String getPriceIsNull(val) {
   }
 }
 
+String convertPriceK(val) {
+  String res = NumberFormat.compact().format(val).toString();
+
+  return res;
+}
+
 String limitString(String str, int maxLength) {
   if (str.length < maxLength) {
     return str;

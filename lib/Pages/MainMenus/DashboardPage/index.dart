@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/GetAnalyticPaymentMonth.dart';
 import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/GetTodaySchedule.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumeListPages/index.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumePages/index.dart';
@@ -102,6 +103,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           warningBg,
                           context,
                           const ConsumeListPage()),
+                      SizedBox(height: 10),
                       getDashboardContainer(
                           fullWidth,
                           3,
@@ -110,7 +112,8 @@ class _DashboardPageState extends State<DashboardPage> {
                           primaryBg,
                           containerBgSecondary,
                           context,
-                          const StatisticPage())
+                          const StatisticPage()),
+                      GetAnalyticPaymentMonth()
                     ]))
               ])
         ],

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Icons/icon.dart';
 import 'package:kumande/Components/Others/divider.dart';
+import 'package:kumande/Modules/Helpers/converter.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:intl/intl.dart';
 
 Widget getDashboardContainer(double width, int total, String title, String url,
     colorStart, colorEnd, ctx, route) {
@@ -14,7 +16,7 @@ Widget getDashboardContainer(double width, int total, String title, String url,
     },
     child: Container(
         padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.only(bottom: 10, right: 10),
+        margin: const EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -81,6 +83,54 @@ Widget getConsumeNameIcon(String type, String title) {
               style: TextStyle(color: textPrimary, fontSize: textSm)),
         ],
       ),
+    ),
+  );
+}
+
+Widget getScheduleTextIcon(double width, String category) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      ClipRRect(
+        child: Image.asset('assets/icons/$category.png', width: width * 0.125),
+      ),
+      Text("$category",
+          style: TextStyle(
+              color: primaryBg, fontSize: textMd, fontWeight: subTitleWeight))
+    ],
+  );
+}
+
+Widget getAnalyticContainer(String ctx, int num, var clr, String desc) {
+  return Container(
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(ctx,
+                style: TextStyle(
+                    color: clr,
+                    fontSize: textMd * 1.1,
+                    fontWeight: subTitleWeight)),
+            Spacer(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(convertPriceK(num),
+                    style: TextStyle(
+                        color: clr,
+                        fontSize: textLg,
+                        fontWeight: subTitleWeight)),
+                Text(desc,
+                    style: TextStyle(color: textSecondary, fontSize: textSm)),
+              ],
+            )
+          ],
+        ),
+      ],
     ),
   );
 }
