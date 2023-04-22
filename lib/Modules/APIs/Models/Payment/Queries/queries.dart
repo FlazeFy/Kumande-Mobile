@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-// Usecase get total consume by from
+// Usecase get total daily Payment by cal
 class QueriesPaymentLineChartModel {
   String ctx;
   int total;

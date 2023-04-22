@@ -59,7 +59,7 @@ class _GetAllConsumeWPagination extends State<GetAllConsumeWPagination>
         itemBuilder: (context, index) {
           return getConsumeHistoryContainer(
               contents[index].consumeName,
-              contents[index].paymentPrice,
+              contents[index].consumePrice,
               contents[index].consumeComment,
               contents[index].consumeType,
               contents[index].consumeFrom,

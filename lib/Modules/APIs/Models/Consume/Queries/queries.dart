@@ -9,11 +9,11 @@ class QueriesConsumeModel {
   String consumeFrom;
   String consumeComment;
   int consumeFavorite;
-  int paymentPrice;
+  int consumePrice;
 
   // Array
   var consumeDetail;
-  var consumePayment;
+  var consumeConsume;
   var consumeTag; // Nullable
 
   // Properties
@@ -28,10 +28,10 @@ class QueriesConsumeModel {
       this.consumeComment,
       this.consumeFavorite,
       this.consumeDetail,
-      this.consumePayment,
+      this.consumeConsume,
       this.consumeTag,
       this.createdAt,
-      this.paymentPrice});
+      this.consumePrice});
 
   factory QueriesConsumeModel.fromJson(Map<String, dynamic> map) {
     return QueriesConsumeModel(
@@ -43,10 +43,10 @@ class QueriesConsumeModel {
       consumeComment: map["consume_comment"],
       consumeFavorite: map["consume_favorite"],
       consumeDetail: map["consume_detail"],
-      consumePayment: map["consume_payment"],
+      consumeConsume: map["consume_Consume"],
       consumeTag: map["consume_tag"],
       createdAt: map["created_at"],
-      paymentPrice: map["payment_price"],
+      consumePrice: map["Consume_price"],
     );
   }
 }
@@ -78,4 +78,26 @@ List<QueriesConsumePieChartModel> QueriesConsumePieChartModelFromJson(
   final data = json.decode(jsonData);
   return List<QueriesConsumePieChartModel>.from(
       data['data'].map((item) => QueriesConsumePieChartModel.fromJson(item)));
+}
+
+// Usecase get total daily Consume by cal
+class QueriesConsumeLineChartModel {
+  String ctx;
+  int total;
+
+  QueriesConsumeLineChartModel({this.ctx, this.total});
+
+  factory QueriesConsumeLineChartModel.fromJson(Map<String, dynamic> map) {
+    return QueriesConsumeLineChartModel(
+      ctx: map["context"],
+      total: map["total"],
+    );
+  }
+}
+
+List<QueriesConsumeLineChartModel> QueriesConsumeLineChartModelFromJson(
+    String jsonData) {
+  final data = json.decode(jsonData);
+  return List<QueriesConsumeLineChartModel>.from(
+      data['data'].map((item) => QueriesConsumeLineChartModel.fromJson(item)));
 }

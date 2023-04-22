@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Models/Payment/Queries/queries.dart';
 import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class MostMainIngredient extends StatefulWidget {
-  const MostMainIngredient({Key key}) : super(key: key);
+class TotalDailyCal extends StatefulWidget {
+  const TotalDailyCal({Key key}) : super(key: key);
 
   @override
-  State<MostMainIngredient> createState() => _MostMainIngredientState();
+  State<TotalDailyCal> createState() => _TotalDailyCalState();
 }
 
-class _MostMainIngredientState extends State<MostMainIngredient> {
-  List<PieData> chartData = [];
+class _TotalDailyCalState extends State<TotalDailyCal> {
+  List<LineData> chartData = [];
   QueriesConsumeService apiService;
 
   @override
@@ -23,25 +24,28 @@ class _MostMainIngredientState extends State<MostMainIngredient> {
 
   @override
   Widget build(BuildContext context) {
+    int year = DateTime.now().year;
+    int month = DateTime.now().month;
+
     return SafeArea(
       maintainBottomViewPadding: false,
       child: FutureBuilder(
-        future: apiService.getTotalConsumeByMainIng(),
+        future: apiService.getTotalDailyCal(month, year),
         builder: (BuildContext context,
-            AsyncSnapshot<List<QueriesConsumePieChartModel>> snapshot) {
+            AsyncSnapshot<List<QueriesConsumeLineChartModel>> snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text(
                   "Something wrong with message: ${snapshot.error.toString()}"),
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
-            List<QueriesConsumePieChartModel> contents = snapshot.data;
+            List<QueriesConsumeLineChartModel> contents = snapshot.data;
 
             contents.forEach((content) {
               String label = content.ctx;
               int total = content.total;
-              PieData pieData = PieData(label, total);
-              chartData.add(pieData);
+              LineData lineData = LineData(label, total.toDouble());
+              chartData.add(lineData);
             });
 
             return _buildListView(chartData);
@@ -53,7 +57,8 @@ class _MostMainIngredientState extends State<MostMainIngredient> {
     );
   }
 
-  Widget _buildListView(List<PieData> contents) {
+  @override
+  Widget _buildListView(List<LineData> contents) {
     double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
@@ -63,18 +68,18 @@ class _MostMainIngredientState extends State<MostMainIngredient> {
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
-        child: SfCircularChart(
-            title: ChartTitle(text: 'Most Main Ingredient'),
-            legend: Legend(isVisible: true),
-            series: <PieSeries<PieData, String>>[
-              PieSeries<PieData, String>(
-                  explode: true,
-                  explodeIndex: 0,
+        child: SfCartesianChart(
+            primaryXAxis: CategoryAxis(),
+            title: ChartTitle(text: 'Total Daily Cal Apr 2023'),
+            legend: Legend(isVisible: false),
+            tooltipBehavior: TooltipBehavior(enable: true),
+            series: <ChartSeries<LineData, String>>[
+              LineSeries<LineData, String>(
                   dataSource: chartData,
-                  xValueMapper: (PieData data, _) => data.xData,
-                  yValueMapper: (PieData data, _) => data.yData,
-                  dataLabelMapper: (PieData data, _) => data.text,
-                  dataLabelSettings: const DataLabelSettings(isVisible: true)),
+                  xValueMapper: (LineData dt, _) => dt.month,
+                  yValueMapper: (LineData dt, _) => dt.total,
+                  name: 'Total',
+                  dataLabelSettings: const DataLabelSettings(isVisible: true))
             ]));
   }
 }

@@ -4,6 +4,7 @@ import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostConsumeFrom.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostConsumeType.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostMainIng.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/totalDailyCal.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/totalSpending.dart';
 
 class StatisticPage extends StatefulWidget {
@@ -26,8 +27,9 @@ class _StatisticPageState extends State<StatisticPage> {
         children: const [
           MostConsumeType(),
           MostConsumeFrom(),
+          MostMainIngredient(),
           TotalSpending(),
-          MostMainIngredient()
+          TotalDailyCal()
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -64,4 +64,44 @@ class QueriesConsumeService {
       return null;
     }
   }
+
+  Future<List<QueriesConsumePieChartModel>> getTotalConsumeByMainIng() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token_key');
+    final header = {
+      'Accept': 'application/json',
+      'Authorization': "Bearer $token",
+    };
+
+    final response = await client.get(
+      Uri.parse("$baseUrl/api/v1/consume/total/bymain"),
+      headers: header,
+    );
+    if (response.statusCode == 200) {
+      return QueriesConsumePieChartModelFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<QueriesConsumeLineChartModel>> getTotalDailyCal(
+      int month, int year) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token_key');
+    final header = {
+      'Accept': 'application/json',
+      'Authorization': "Bearer $token",
+    };
+
+    final response = await client.get(
+      Uri.parse(
+          "$baseUrl/api/v1/consume/total/day/cal/month/$month/year/$year"),
+      headers: header,
+    );
+    if (response.statusCode == 200) {
+      return QueriesConsumeLineChartModelFromJson(response.body);
+    } else {
+      return null;
+    }
+  }
 }
