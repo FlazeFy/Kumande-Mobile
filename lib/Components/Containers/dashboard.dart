@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Icons/icon.dart';
-import 'package:kumande/Components/Others/divider.dart';
 import 'package:kumande/Modules/Helpers/converter.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:intl/intl.dart';
 
 Widget getDashboardContainer(double width, int total, String title, String url,
     colorStart, colorEnd, ctx, route) {
@@ -95,7 +93,7 @@ Widget getScheduleTextIcon(double width, String category) {
       ClipRRect(
         child: Image.asset('assets/icons/$category.png', width: width * 0.125),
       ),
-      Text("$category",
+      Text(category,
           style: TextStyle(
               color: primaryBg, fontSize: textMd, fontWeight: subTitleWeight))
     ],
@@ -115,7 +113,7 @@ Widget getAnalyticContainer(String ctx, int num, var clr, String desc) {
                     color: clr,
                     fontSize: textMd * 1.1,
                     fontWeight: subTitleWeight)),
-            Spacer(),
+            const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [

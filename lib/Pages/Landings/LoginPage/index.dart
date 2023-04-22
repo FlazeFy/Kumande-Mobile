@@ -3,6 +3,8 @@ import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/Landings/LoginPage/Usecases/PostLogin.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key key}) : super(key: key);
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -44,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                         style:
                             TextStyle(color: Colors.white, fontSize: textSm)),
                   ])),
-              PostLogin()
+              const PostLogin()
             ],
           )),
     );

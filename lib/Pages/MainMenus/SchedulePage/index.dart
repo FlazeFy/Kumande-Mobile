@@ -13,12 +13,12 @@ class _SchedulePageState extends State<SchedulePage> {
   @override
   Widget build(BuildContext context) {
     double fullHeight = MediaQuery.of(context).size.height;
-    double fullWidth = MediaQuery.of(context).size.width;
+    //double fullWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.only(top: fullHeight * 0.06),
-        children: [GetDailyConsume()],
+        children: const [GetDailyConsume()],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,

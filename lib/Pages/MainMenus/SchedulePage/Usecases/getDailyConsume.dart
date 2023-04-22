@@ -13,8 +13,6 @@ class GetDailyConsume extends StatefulWidget {
 }
 
 class _GetDailyConsumeState extends State<GetDailyConsume> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = slctSchedule;
   DateTime focusedDay = slctSchedule;
@@ -27,10 +25,10 @@ class _GetDailyConsumeState extends State<GetDailyConsume> {
       lastDay: DateTime.utc(2052),
       weekendDays: const [DateTime.sunday],
       calendarFormat: format,
-      onFormatChanged: (CalendarFormat _format) {
+      onFormatChanged: (CalendarFormat val) {
         setState(
           () {
-            format = _format;
+            format = val;
           },
         );
       },
@@ -55,7 +53,7 @@ class _GetDailyConsumeState extends State<GetDailyConsume> {
             });
           },
         );
-        print(selectedDay);
+        //print(selectedDay);
       },
       selectedDayPredicate: (DateTime date) {
         return isSameDay(selectedDay, date);

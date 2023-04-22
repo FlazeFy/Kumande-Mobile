@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' show Client;
 import 'package:kumande/Modules/APIs/Models/Schedule/Queries/queries.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -51,7 +51,7 @@ class _GetAllConsumeWPagination extends State<GetAllConsumeWPagination>
 
   Widget _buildListView(List<QueriesConsumeModel> contents) {
     //double fullHeight = MediaQuery.of(context).size.height;
-    double fullWidth = MediaQuery.of(context).size.width;
+    //double fullWidth = MediaQuery.of(context).size.width;
 
     return ListView.builder(
         itemCount: contents.length,

@@ -8,9 +8,10 @@ import 'package:kumande/Modules/APIs/Models/Auth/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/Auth/Commands/commands.dart';
 import 'package:kumande/Modules/Firebases/Auths/auth.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class PostLogin extends StatefulWidget {
+  const PostLogin({Key key}) : super(key: key);
+
   @override
   State<PostLogin> createState() => _PostLoginState();
 }
@@ -28,7 +29,7 @@ class _PostLoginState extends State<PostLogin> {
 
   @override
   Widget build(BuildContext context) {
-    double fullHeight = MediaQuery.of(context).size.height;
+    //double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
     bool _isLoading = false;
 
@@ -102,8 +103,6 @@ class _PostLoginState extends State<PostLogin> {
                           builder: (BuildContext context) => FailedDialog(
                               text: "Login failed, field can't be empty"));
                     }
-                    final prefs = await SharedPreferences.getInstance();
-                    final token = prefs.getString('token_key');
                   },
                   child: const Text("Sign In", style: TextStyle(fontSize: 15))))
         ],

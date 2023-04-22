@@ -54,8 +54,8 @@ class _MostMainIngredientState extends State<MostMainIngredient> {
   }
 
   Widget _buildListView(List<PieData> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
-    double fullWidth = MediaQuery.of(context).size.width;
+    // double fullHeight = MediaQuery.of(context).size.height;
+    // double fullWidth = MediaQuery.of(context).size.width;
 
     return Container(
         margin: const EdgeInsets.all(10),

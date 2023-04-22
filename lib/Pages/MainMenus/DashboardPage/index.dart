@@ -103,7 +103,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           warningBg,
                           context,
                           const ConsumeListPage()),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       getDashboardContainer(
                           fullWidth,
                           3,

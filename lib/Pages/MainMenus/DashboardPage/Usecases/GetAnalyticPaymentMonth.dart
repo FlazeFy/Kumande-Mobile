@@ -50,7 +50,7 @@ class _GetAnalyticPaymentMonth extends State<GetAnalyticPaymentMonth>
   }
 
   Widget _buildListView(List<QueriesMultiAnalyticModel> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
+    //double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
     return Container(

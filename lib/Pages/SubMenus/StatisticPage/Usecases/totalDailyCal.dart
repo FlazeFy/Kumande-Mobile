@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
-import 'package:kumande/Modules/APIs/Models/Payment/Queries/queries.dart';
 import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -59,8 +58,8 @@ class _TotalDailyCalState extends State<TotalDailyCal> {
 
   @override
   Widget _buildListView(List<LineData> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
-    double fullWidth = MediaQuery.of(context).size.width;
+    // double fullHeight = MediaQuery.of(context).size.height;
+    // double fullWidth = MediaQuery.of(context).size.width;
 
     return Container(
         margin: const EdgeInsets.all(10),

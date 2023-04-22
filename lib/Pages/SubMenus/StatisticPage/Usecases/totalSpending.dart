@@ -57,8 +57,8 @@ class _TotalSpendingState extends State<TotalSpending> {
 
   @override
   Widget _buildListView(List<LineData> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
-    double fullWidth = MediaQuery.of(context).size.width;
+    // double fullHeight = MediaQuery.of(context).size.height;
+    // double fullWidth = MediaQuery.of(context).size.width;
 
     return Container(
         margin: const EdgeInsets.all(10),

@@ -49,7 +49,7 @@ class _GetTodaySchedule extends State<GetTodaySchedule>
   }
 
   Widget _buildListView(List<QueriesTodayScheduleModel> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
+    //double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
     return Container(
