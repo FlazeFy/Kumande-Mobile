@@ -37,6 +37,7 @@ dependencies:
 
   # Input
   flutter_spinbox: ^0.13.0
+  table_calendar: ^3.0.6
 
   # Firebase.
   firebase_analytics: ^9.1.12

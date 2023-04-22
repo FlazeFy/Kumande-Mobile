@@ -3,6 +3,7 @@ import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostConsumeFrom.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostConsumeType.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostMainIng.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/totalSpending.dart';
 
 class StatisticPage extends StatefulWidget {
@@ -22,7 +23,12 @@ class _StatisticPageState extends State<StatisticPage> {
       appBar: getAppbar("Statistic"),
       body: ListView(
         padding: const EdgeInsets.only(top: 10),
-        children: const [MostConsumeType(), MostConsumeFrom(), TotalSpending()],
+        children: const [
+          MostConsumeType(),
+          MostConsumeFrom(),
+          TotalSpending(),
+          MostMainIngredient()
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,

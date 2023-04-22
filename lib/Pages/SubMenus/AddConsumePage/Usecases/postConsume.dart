@@ -83,8 +83,8 @@ class _PostConsumeState extends State<PostConsume> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                   getInputLabel("Calorie", textPrimary, textSm),
-                  // getInputNumberMain(
-                  //     widget.consumeCalCtrl., "Cal", 10.0, 600.0, 120.0)
+                  getInputNumberMain(
+                      widget.setConsumeCal, "Cal", 10.0, 600.0, 120.0)
                 ]))
           ],
         ),

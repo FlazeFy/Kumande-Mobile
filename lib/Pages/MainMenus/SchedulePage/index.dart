@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/getDailyConsume.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({Key key}) : super(key: key);
@@ -11,12 +12,13 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   @override
   Widget build(BuildContext context) {
+    double fullHeight = MediaQuery.of(context).size.height;
+    double fullWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[],
-        ),
+      body: ListView(
+        padding: EdgeInsets.only(top: fullHeight * 0.06),
+        children: [GetDailyConsume()],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,

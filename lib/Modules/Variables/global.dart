@@ -68,5 +68,9 @@ var tabcolHistoryConsume = [
   {"title": "Snack", "class": GetAllConsumeWPagination(type: "Snack")}
 ];
 
+// Calendar
+DateTime slctSchedule = DateTime.now();
+int selectedIndex = 0;
+
 // Navigation
 int page = 0;
