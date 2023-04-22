@@ -56,8 +56,8 @@ Widget getInputDescMain(ctrl, String title, int len, int min, int max) {
   );
 }
 
-Widget getInputNumberMain(
-    ctrl, String title, double min, double max, double init) {
+Widget getInputNumberMain(Function(double) onChanged, String title, double min,
+    double max, double init) {
   return Container(
     padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
     child: SpinBox(
@@ -68,7 +68,9 @@ Widget getInputNumberMain(
       textStyle: TextStyle(
         fontSize: textSm,
       ),
-      onChanged: (value) {},
+      onChanged: (value) {
+        onChanged(value);
+      },
       decoration: InputDecoration(
           contentPadding:
               const EdgeInsets.symmetric(vertical: 0, horizontal: 15),

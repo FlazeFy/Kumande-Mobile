@@ -34,6 +34,7 @@ String limitString(String str, int maxLength) {
   }
 }
 
+// Make this multi response
 String getMessageResponseFromObject(val) {
   var res = "";
 

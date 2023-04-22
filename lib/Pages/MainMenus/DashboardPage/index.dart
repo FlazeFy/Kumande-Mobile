@@ -3,10 +3,10 @@ import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/GetAnalyticPaymentMonth.dart';
 import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/GetTodaySchedule.dart';
-import 'package:kumande/Pages/SubMenus/AddConsumeListPages/index.dart';
-import 'package:kumande/Pages/SubMenus/AddConsumePages/index.dart';
-import 'package:kumande/Pages/SubMenus/ConsumeListPages/index.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPages/index.dart';
+import 'package:kumande/Pages/SubMenus/AddConsumeListPage/index.dart';
+import 'package:kumande/Pages/SubMenus/AddConsumePage/index.dart';
+import 'package:kumande/Pages/SubMenus/ConsumeListPage/index.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/index.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key key}) : super(key: key);
