@@ -7,7 +7,7 @@ class QueriesConsumeListService {
   Client client = Client();
 
   Future<List<QueriesConsumeListModel>> getAllConsumeList(
-      String limit, String order) async {
+      int limit, String order) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token_key');
     final header = {

@@ -32,6 +32,12 @@ String limitString(String str, int maxLength) {
   }
 }
 
+String ucFirst(String val) {
+  String res = val[0].toUpperCase() + val.substring(1);
+
+  return res;
+}
+
 // Make this multi response
 String getMessageResponseFromObject(val) {
   var res = "";

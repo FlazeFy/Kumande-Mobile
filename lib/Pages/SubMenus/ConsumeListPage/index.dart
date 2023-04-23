@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/SubMenus/ConsumeListPage/Usecases/getAllConsumeList.dart';
 
 class ConsumeListPage extends StatefulWidget {
   const ConsumeListPage({Key key}) : super(key: key);
@@ -15,10 +16,7 @@ class _ConsumeListPageState extends State<ConsumeListPage> {
     //double fullWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.only(top: fullHeight * 0.06),
-        children: const [],
-      ),
+      body: GetAllConsumeListWPagination(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,
         onPressed: () {},
