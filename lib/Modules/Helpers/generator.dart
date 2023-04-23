@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 // Show only
 Widget generateTagShow(list) {
-  if (list.isNotEmpty) {
+  if (list != null && list.isNotEmpty) {
     return Wrap(
         runSpacing: -5,
         spacing: 5,

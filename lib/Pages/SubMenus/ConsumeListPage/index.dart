@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/SubMenus/ConsumeListPage/Usecases/getAllConsumeList.dart';
 
@@ -16,6 +17,7 @@ class _ConsumeListPageState extends State<ConsumeListPage> {
     //double fullWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: getAppbar("Consume List"),
       body: GetAllConsumeListWPagination(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,

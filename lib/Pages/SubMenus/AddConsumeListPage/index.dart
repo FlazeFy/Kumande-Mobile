@@ -1,10 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:kumande/Components/Dialogs/failed.dart';
 import 'package:kumande/Components/Forms/input.dart';
+import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Components/Typography/text.dart';
+import 'package:kumande/Modules/APIs/Models/Consume/Commands/commandsList.dart';
+import 'package:kumande/Modules/APIs/Services/Consume/Commands/commandsList.dart';
 import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/SubMenus/AddConsumeListPage/Usecases/postConsumeList.dart';
+import 'package:kumande/Pages/SubMenus/ConsumeListPage/index.dart';
 
 class AddConsumeListPage extends StatefulWidget {
   const AddConsumeListPage({Key key}) : super(key: key);
@@ -14,51 +22,84 @@ class AddConsumeListPage extends StatefulWidget {
 }
 
 class _AddConsumeListPageState extends State<AddConsumeListPage> {
-  var consumeListDescCtrl = TextEditingController();
-  var consumeListNameCtrl = TextEditingController();
+  var listDescCtrl = TextEditingController();
+  var listNameCtrl = TextEditingController();
+  ConsumeListCommandsService apiService;
+
+  @override
+  void initState() {
+    super.initState();
+    apiService = ConsumeListCommandsService();
+  }
 
   void _refreshPage() {
     setState(() {});
   }
 
   @override
+  void dispose() {
+    listNameCtrl.dispose();
+    listDescCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // double fullHeight = MediaQuery.of(context).size.height;
     // double fullWidth = MediaQuery.of(context).size.width;
+    bool _isLoading = false;
 
     return Scaffold(
       appBar: getAppbar("Add Consume List"),
       body: ListView(
         padding: const EdgeInsets.only(top: 20, right: 15, left: 15),
         children: [
-          getInputLabel("Consume", primaryBg, textLg),
-          const SizedBox(height: 10),
-          getInputLabel("Name", textPrimary, textSm),
-          getInputTextMain(consumeListNameCtrl, "ex : healthy food", 50),
-          const SizedBox(height: 10),
-          Divider(
-            height: paddingDivider,
-            thickness: 1,
-          ),
-          getInputLabel("Description", primaryBg, textLg),
-          const SizedBox(height: 10),
-          getInputDescMain(consumeListDescCtrl,
-              "ex : vegetables, fruits, juice, etc", 255, 5, 5),
-          const SizedBox(height: 10),
-          Divider(
-            height: paddingDivider,
-            thickness: 1,
-          ),
-          getInputLabel("My Tag", primaryBg, textLg),
-          generateTag(tagListDummy, _refreshPage, "tag_consume_list"),
-          const SizedBox(height: 10),
-          generateSelectedTag(
-              selectedTagConsumeList, _refreshPage, "tag_consume_list")
+          PostConsumeList(
+              listNameCtrl: listNameCtrl, listDescCtrl: listDescCtrl)
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,
-        onPressed: () {},
+        onPressed: () async {
+          AddConsumeListModel data = AddConsumeListModel(
+              listName: listNameCtrl.text,
+              listDesc: listDescCtrl.text,
+              listTag: jsonEncode(selectedTagConsumeList)); // for now
+
+          //Validator
+          if (data.listName.isNotEmpty && data.listDesc.isNotEmpty) {
+            apiService.addConsumeList(data).then((response) {
+              setState(() => _isLoading = false);
+              var status = response[0]['status'];
+              var body = response[0]['body'];
+
+              if (status == "success") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ConsumeListPage()),
+                );
+                setState(() {
+                  page = 1;
+                });
+              } else {
+                showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        FailedDialog(text: body));
+                // print(status);
+
+                listNameCtrl.clear();
+                listDescCtrl.clear();
+              }
+            });
+          } else {
+            showDialog<String>(
+                context: context,
+                builder: (BuildContext context) =>
+                    FailedDialog(text: "Add list, some field can't be empty"));
+          }
+        },
         tooltip: 'Save',
         child: const Icon(Icons.check),
       ),
