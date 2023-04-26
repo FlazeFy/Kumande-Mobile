@@ -1,4 +1,5 @@
 // Chart
+import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Pages/MainMenus/HistoryPage/Usecases/GetAllConsumeWPagination.dart';
 
 class PieData {
@@ -74,3 +75,5 @@ int selectedIndex = 0;
 
 // Navigation
 int page = 0;
+int monthCalendar = getDateNowInt("month");
+int yearCalendar = getDateNowInt("year");
