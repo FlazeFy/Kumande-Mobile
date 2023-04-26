@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/consume.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queriesList.dart';
 import 'package:kumande/Modules/APIs/Services/Consume/Queries/queriesList.dart';
-import 'package:kumande/Modules/Variables/global.dart';
 
 class GetAllConsumeListWPagination extends StatefulWidget {
   GetAllConsumeListWPagination({Key key, this.type}) : super(key: key);

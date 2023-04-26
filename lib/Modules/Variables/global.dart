@@ -73,6 +73,9 @@ var tabcolHistoryConsume = [
 DateTime slctSchedule = DateTime.now();
 int selectedIndex = 0;
 
+String slctCalendarView = "Total Spending";
+List<String> optionsCalendarView = ["Total Spending", "Total Calorie"];
+
 // Navigation
 int page = 0;
 int monthCalendar = getDateNowInt("month");
