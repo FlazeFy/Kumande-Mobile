@@ -29,7 +29,7 @@ class _GetTodaySchedule extends State<GetTodaySchedule>
     return SafeArea(
       maintainBottomViewPadding: false,
       child: FutureBuilder(
-        future: apiService.getTodaySchedule(getTodayDayString()),
+        future: apiService.getTodaySchedule(getTodayDayString(null)),
         builder: (BuildContext context,
             AsyncSnapshot<List<QueriesTodayScheduleModel>> snapshot) {
           if (snapshot.hasError) {

@@ -25,8 +25,12 @@ double textSm = 13.5;
 
 // Padding
 double paddingDivider = 12;
+double paddingContentSM = 6;
 double paddingContainerLG = 16;
 
 // Font Weight
 var titleWeight = FontWeight.bold;
 var subTitleWeight = FontWeight.w500;
+
+// Table
+

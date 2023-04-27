@@ -100,6 +100,12 @@ Widget getScheduleTextIcon(double width, String category) {
   );
 }
 
+Widget getScheduleIcon(double width, String category) {
+  return ClipRRect(
+    child: Image.asset('assets/icons/$category.png', width: width),
+  );
+}
+
 Widget getAnalyticContainer(String ctx, int num, var clr, String desc) {
   return Container(
     padding: const EdgeInsets.all(10),

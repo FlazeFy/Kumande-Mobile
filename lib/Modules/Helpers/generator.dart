@@ -98,10 +98,16 @@ Widget generateSelectedTag(list, call, res) {
   }
 }
 
-getTodayDayString() {
-  DateTime now = DateTime.now();
-  String day = DateFormat('E').format(now);
-  return day;
+getTodayDayString(int i) {
+  if (i != null) {
+    DateTime now = DateTime.now().add(Duration(days: i));
+    String day = DateFormat('E').format(now);
+    return day;
+  } else {
+    DateTime now = DateTime.now();
+    String day = DateFormat('E').format(now);
+    return day;
+  }
 }
 
 getDateNowInt(String type) {

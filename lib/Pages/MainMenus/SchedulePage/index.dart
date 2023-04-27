@@ -5,6 +5,7 @@ import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_daily_calorie.dart';
 import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_daily_spend.dart';
+import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_my_schedule.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({Key key}) : super(key: key);
@@ -33,8 +34,13 @@ class _SchedulePageState extends State<SchedulePage> {
         children: [
           Row(
             children: [
+              Padding(
+                  padding: EdgeInsets.only(
+                      left: paddingContainerLG, top: paddingContainerLG),
+                  child: getInputLabel("Calendar", primaryBg, textLg)),
+              const Spacer(),
               Container(
-                margin: EdgeInsets.only(left: paddingContainerLG),
+                margin: EdgeInsets.only(right: paddingContainerLG),
                 child: getDropDownMain(slctCalendarView, optionsCalendarView,
                     (String newValue) {
                   setState(() {
@@ -44,7 +50,12 @@ class _SchedulePageState extends State<SchedulePage> {
               )
             ],
           ),
-          toogleCalendarView(slctCalendarView)
+          toogleCalendarView(slctCalendarView),
+          Padding(
+              padding: EdgeInsets.only(
+                  left: paddingContainerLG, top: paddingContainerLG),
+              child: getInputLabel("My Schedule", primaryBg, textLg)),
+          const GetMySchedule()
         ],
       ),
       floatingActionButton: FloatingActionButton(
