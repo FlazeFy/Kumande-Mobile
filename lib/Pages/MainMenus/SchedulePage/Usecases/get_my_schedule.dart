@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:kumande/Components/Containers/dashboard.dart';
-import 'package:kumande/Modules/APIs/Services/Payment/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Models/Schedule/Queries/queries.dart';
 import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
 class GetMySchedule extends StatefulWidget {
-  const GetMySchedule({Key key}) : super(key: key);
+  GetMySchedule({Key key, this.schedule}) : super(key: key);
+  List<QueriesMyScheduleModel> schedule;
 
   @override
   State<GetMySchedule> createState() => _GetMyScheduleState();
 }
 
 class _GetMyScheduleState extends State<GetMySchedule> {
-  DateTime selectedDay = slctSchedule;
-  DateTime focusedDay = slctSchedule;
-  QueriesPaymentService apiService;
   int i = 0;
 
   @override
@@ -23,7 +20,6 @@ class _GetMyScheduleState extends State<GetMySchedule> {
     clearTable();
     super.initState();
     buildTable();
-    apiService = QueriesPaymentService();
   }
 
   clearTable() {
@@ -32,28 +28,63 @@ class _GetMyScheduleState extends State<GetMySchedule> {
 
   buildTable() {
     for (int j = 0; j < 7; j++) {
+      String dayCheck = getTodayDayString(j);
+      var breakfast = const Text("");
+      var lunch = const Text("");
+      var dinner = const Text("");
+      widget.schedule.forEach((e) {
+        if (e.day == dayCheck) {
+          if (e.time == "Breakfast") {
+            breakfast = Text(e.scheduleConsume,
+                style: TextStyle(
+                    color: textPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: textSm - 1.5));
+          } else if (e.time == "Lunch") {
+            lunch = Text(e.scheduleConsume,
+                style: TextStyle(
+                    color: textPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: textSm - 1.5));
+          } else if (e.time == "Dinner") {
+            dinner = Text(e.scheduleConsume,
+                style: TextStyle(
+                    color: textPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: textSm - 1.5));
+          }
+        }
+      });
       tableCellSchedule.add({
         "title": TableCell(
           verticalAlignment: TableCellVerticalAlignment.middle,
           child: Container(
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(vertical: paddingContentSM),
-            child: Text(getTodayDayString(j),
+            child: Text(dayCheck,
                 style:
                     TextStyle(color: textPrimary, fontWeight: FontWeight.w500)),
           ),
         ),
         "breakfast": TableCell(
-          verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Container(),
-        ),
+            verticalAlignment: TableCellVerticalAlignment.middle,
+            child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(paddingContentSM),
+                child: breakfast)),
         "lunch": TableCell(
-          verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Container(),
-        ),
+            verticalAlignment: TableCellVerticalAlignment.middle,
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(paddingContentSM),
+              child: lunch,
+            )),
         "dinner": TableCell(
           verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Container(),
+          child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(paddingContentSM),
+              child: dinner),
         ),
       });
     }

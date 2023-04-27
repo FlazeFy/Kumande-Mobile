@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Forms/input.dart';
 import 'package:kumande/Components/Typography/text.dart';
+import 'package:kumande/Modules/APIs/Models/Schedule/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Services/Schedule/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_daily_calorie.dart';
@@ -15,8 +17,42 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
+  QueriesScheduleService apiService;
+  int i = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    apiService = QueriesScheduleService();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return SafeArea(
+      maintainBottomViewPadding: false,
+      child: FutureBuilder(
+        future: apiService.getMySchedule(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<QueriesMyScheduleModel>> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                  "Something wrong with message: ${snapshot.error.toString()}"),
+            );
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            List<QueriesMyScheduleModel> contents = snapshot.data;
+            return _buildListView(contents);
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget _buildListView(List<QueriesMyScheduleModel> contents) {
     double fullHeight = MediaQuery.of(context).size.height;
     //double fullWidth = MediaQuery.of(context).size.width;
 
@@ -55,7 +91,7 @@ class _SchedulePageState extends State<SchedulePage> {
               padding: EdgeInsets.only(
                   left: paddingContainerLG, top: paddingContainerLG),
               child: getInputLabel("My Schedule", primaryBg, textLg)),
-          const GetMySchedule()
+          GetMySchedule(schedule: contents)
         ],
       ),
       floatingActionButton: FloatingActionButton(
