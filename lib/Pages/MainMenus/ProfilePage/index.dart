@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Backgrounds/custom.dart';
+import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/get_profile_header.dart';
+import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_budget_data.dart';
+import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_body_data.dart';
+import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_consume_data.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key key}) : super(key: key);
@@ -18,7 +22,25 @@ class _ProfilePageState extends State<ProfilePage> {
         body: CustomPaint(
             painter: CirclePainter(),
             child: ListView(
-                padding: EdgeInsets.only(top: fullHeight * 0.04),
-                children: [ShowProfileHeader()])));
+                padding: EdgeInsets.only(top: fullHeight * 0.035),
+                children: [
+                  ShowProfileHeader(),
+                  const ShowBudgetData(),
+                  const ShowHealthData(),
+                  const ShowConsumeData(),
+                  Container(
+                      height: fullHeight * 0.7,
+                      margin: EdgeInsets.only(top: paddingContainerLG * 2),
+                      padding: EdgeInsets.all(paddingContentSM),
+                      decoration: BoxDecoration(
+                        color: whiteBg,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30)),
+                      ),
+                      child: Column(
+                        children: [],
+                      )),
+                ])));
   }
 }

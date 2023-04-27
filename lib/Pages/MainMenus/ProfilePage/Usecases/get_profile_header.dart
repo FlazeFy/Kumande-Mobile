@@ -30,12 +30,12 @@ class ShowProfileHeader extends StatelessWidget {
             return Container(
               width: fullWidth,
               padding:
-                  EdgeInsets.only(top: fullHeight * 0.075, right: 20, left: 20),
+                  EdgeInsets.only(top: fullHeight * 0.04, right: 20, left: 20),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    getProfileImageSideBar(fullWidth, 0.4, image, gender),
+                    getProfileImageSideBar(fullWidth, 0.35, image, gender),
                     SizedBox(height: paddingContainerLG),
                     Text(username,
                         style: TextStyle(
