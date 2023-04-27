@@ -20,6 +20,10 @@ class LoginCommandsService {
     if (response.statusCode == 200) {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('token_key', responseData['token']);
+      await prefs.setString('username_key', responseData['result']['username']);
+      await prefs.setString(
+          'image_key', responseData['result']['image_url'].toString());
+      await prefs.setString('gender_key', responseData['result']['gender']);
 
       return [
         {

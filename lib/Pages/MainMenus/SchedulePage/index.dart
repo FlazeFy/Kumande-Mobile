@@ -66,7 +66,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.only(top: fullHeight * 0.06),
+        padding: EdgeInsets.only(top: fullHeight * 0.04),
         children: [
           Row(
             children: [

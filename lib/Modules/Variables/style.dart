@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Background Color
 var whiteBg = Colors.white;
 var primaryBg = const Color(0xFF00A7EA);
+var secondaryBg = const Color(0xFF3366FF);
 var successBg = const Color(0xFF2EC193);
 var warningBg = const Color(0xFFF48C0D);
 var dangerBg = const Color(0xFFF87469);

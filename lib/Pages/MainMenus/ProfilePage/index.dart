@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Components/Backgrounds/custom.dart';
+import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/get_profile_header.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key key}) : super(key: key);
@@ -11,19 +12,13 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    double fullHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: successBg,
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+        body: CustomPaint(
+            painter: CirclePainter(),
+            child: ListView(
+                padding: EdgeInsets.only(top: fullHeight * 0.04),
+                children: [ShowProfileHeader()])));
   }
 }

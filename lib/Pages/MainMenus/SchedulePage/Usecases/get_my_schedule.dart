@@ -40,18 +40,21 @@ class _GetMyScheduleState extends State<GetMySchedule> {
                     color: textPrimary,
                     fontWeight: FontWeight.w500,
                     fontSize: textSm - 1.5));
+            return;
           } else if (e.time == "Lunch") {
             lunch = Text(e.scheduleConsume,
                 style: TextStyle(
                     color: textPrimary,
                     fontWeight: FontWeight.w500,
                     fontSize: textSm - 1.5));
+            return;
           } else if (e.time == "Dinner") {
             dinner = Text(e.scheduleConsume,
                 style: TextStyle(
                     color: textPrimary,
                     fontWeight: FontWeight.w500,
                     fontSize: textSm - 1.5));
+            return;
           }
         }
       });

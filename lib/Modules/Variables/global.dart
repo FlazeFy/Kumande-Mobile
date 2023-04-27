@@ -121,3 +121,12 @@ var tableCellSchedule = [
 int page = 0;
 int monthCalendar = getDateNowInt("month");
 int yearCalendar = getDateNowInt("year");
+
+// Class and object
+class UserMiniProfile {
+  final String username;
+  final String image;
+  final String gender;
+
+  UserMiniProfile({this.username, this.image, this.gender});
+}
