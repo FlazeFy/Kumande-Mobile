@@ -32,32 +32,42 @@ class _GetMyScheduleState extends State<GetMySchedule> {
       var breakfast = const Text("");
       var lunch = const Text("");
       var dinner = const Text("");
-      widget.schedule.forEach((e) {
-        if (e.day == dayCheck) {
-          if (e.time == "Breakfast") {
-            breakfast = Text(e.scheduleConsume,
-                style: TextStyle(
-                    color: textPrimary,
-                    fontWeight: FontWeight.w500,
-                    fontSize: textSm - 1.5));
-            return;
-          } else if (e.time == "Lunch") {
-            lunch = Text(e.scheduleConsume,
-                style: TextStyle(
-                    color: textPrimary,
-                    fontWeight: FontWeight.w500,
-                    fontSize: textSm - 1.5));
-            return;
-          } else if (e.time == "Dinner") {
-            dinner = Text(e.scheduleConsume,
-                style: TextStyle(
-                    color: textPrimary,
-                    fontWeight: FontWeight.w500,
-                    fontSize: textSm - 1.5));
-            return;
+
+      if (widget.schedule != null) {
+        widget.schedule.forEach((e) {
+          if (e.day == dayCheck) {
+            if (e.time == "Breakfast") {
+              breakfast = Text(e.scheduleConsume,
+                  style: TextStyle(
+                      color: textPrimary,
+                      fontWeight: FontWeight.w500,
+                      fontSize: textSm - 1.5));
+              return;
+            } else if (e.time == "Lunch") {
+              lunch = Text(e.scheduleConsume,
+                  style: TextStyle(
+                      color: textPrimary,
+                      fontWeight: FontWeight.w500,
+                      fontSize: textSm - 1.5));
+              return;
+            } else if (e.time == "Dinner") {
+              dinner = Text(e.scheduleConsume,
+                  style: TextStyle(
+                      color: textPrimary,
+                      fontWeight: FontWeight.w500,
+                      fontSize: textSm - 1.5));
+              return;
+            }
           }
-        }
-      });
+        });
+      } else {
+        breakfast = Text("",
+            style: TextStyle(
+                color: textPrimary,
+                fontWeight: FontWeight.w500,
+                fontSize: textSm - 1.5));
+      }
+
       tableCellSchedule.add({
         "title": TableCell(
           verticalAlignment: TableCellVerticalAlignment.middle,

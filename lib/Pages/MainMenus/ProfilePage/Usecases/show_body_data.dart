@@ -50,9 +50,7 @@ class _ShowHealthDataState extends State<ShowHealthData> {
 
     return Container(
       margin: EdgeInsets.only(
-          top: paddingContainerLG,
-          left: paddingContainerLG * 2,
-          right: paddingContainerLG * 2),
+          left: paddingContainerLG * 2, right: paddingContainerLG * 2),
       child: Row(children: [
         Container(
             padding: EdgeInsets.all(paddingContentSM),

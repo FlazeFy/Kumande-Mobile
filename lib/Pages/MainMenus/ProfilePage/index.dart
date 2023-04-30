@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Components/Backgrounds/custom.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/get_profile_header.dart';
-import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_budget_data.dart';
+import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_payment_data.dart';
 import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_body_data.dart';
 import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_consume_data.dart';
 
@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: EdgeInsets.only(top: fullHeight * 0.035),
                 children: [
                   ShowProfileHeader(),
-                  const ShowBudgetData(),
+                  const ShowPaymentData(),
                   const ShowHealthData(),
                   const ShowConsumeData(),
                   Container(

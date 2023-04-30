@@ -1,17 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Typography/text.dart';
+import 'package:kumande/Modules/APIs/Models/Analytic/queries.dart';
+import 'package:kumande/Modules/APIs/Services/Analytic/queries.dart';
+import 'package:kumande/Modules/Helpers/converter.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
-class ShowBudgetData extends StatefulWidget {
-  const ShowBudgetData({Key key}) : super(key: key);
+class ShowPaymentData extends StatefulWidget {
+  const ShowPaymentData({Key key}) : super(key: key);
 
   @override
-  State<ShowBudgetData> createState() => _ShowBudgetDataState();
+  State<ShowPaymentData> createState() => _ShowPaymentDataState();
 }
 
-class _ShowBudgetDataState extends State<ShowBudgetData> {
+class _ShowPaymentDataState extends State<ShowPaymentData> {
+  QueriesAnalyticService apiService;
+
+  @override
+  void initState() {
+    super.initState();
+    apiService = QueriesAnalyticService();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return SafeArea(
+      maintainBottomViewPadding: false,
+      child: FutureBuilder(
+        future: apiService.getLifetimePayment(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<QueriesSpendLifeModel>> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                  "Something wrong with message: ${snapshot.error.toString()}"),
+            );
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            List<QueriesSpendLifeModel> contents = snapshot.data;
+            return _buildListView(contents);
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _buildListView(List<QueriesSpendLifeModel> contents) {
     double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
@@ -46,7 +80,8 @@ class _ShowBudgetDataState extends State<ShowBudgetData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("Total in Lifetime", whiteBg, textSm),
-                        getInputLabel("2000K", whiteBg, textLg + 5),
+                        getInputLabel(convertPriceK(contents[0].total), whiteBg,
+                            textLg + 5),
                       ],
                     ),
                     const Spacer(),
@@ -54,7 +89,8 @@ class _ShowBudgetDataState extends State<ShowBudgetData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("in Days", whiteBg, textSm),
-                        getInputLabel("20", whiteBg, textLg + 5),
+                        getInputLabel(
+                            contents[0].days.toString(), whiteBg, textLg + 5),
                       ],
                     )
                   ],
