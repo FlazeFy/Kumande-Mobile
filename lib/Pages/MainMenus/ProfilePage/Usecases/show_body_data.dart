@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Typography/text.dart';
+import 'package:kumande/Modules/APIs/Models/Count/Queries/queries_calorie.dart';
+import 'package:kumande/Modules/APIs/Services/Count/Queries/queries_calorie.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
 class ShowHealthData extends StatefulWidget {
@@ -10,8 +12,39 @@ class ShowHealthData extends StatefulWidget {
 }
 
 class _ShowHealthDataState extends State<ShowHealthData> {
+  QueriesCountCalorieService apiService;
+
+  @override
+  void initState() {
+    super.initState();
+    apiService = QueriesCountCalorieService();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return SafeArea(
+      maintainBottomViewPadding: false,
+      child: FutureBuilder(
+        future: apiService.getMyBodyInfo(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<QueriesCountCalorieModel>> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                  "Something wrong with message: ${snapshot.error.toString()}"),
+            );
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            List<QueriesCountCalorieModel> contents = snapshot.data;
+            return _buildListView(contents);
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _buildListView(List<QueriesCountCalorieModel> contents) {
     double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
@@ -51,7 +84,8 @@ class _ShowHealthDataState extends State<ShowHealthData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("Weight", whiteBg, textSm),
-                        getInputLabel("60 Kg", whiteBg, textMd - 1),
+                        getInputLabel(
+                            "${contents[0].weight} Kg", whiteBg, textMd - 1),
                       ],
                     ),
                     const Spacer(),
@@ -59,7 +93,8 @@ class _ShowHealthDataState extends State<ShowHealthData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("Height", whiteBg, textSm),
-                        getInputLabel("183 Cm", whiteBg, textMd - 1),
+                        getInputLabel(
+                            "${contents[0].height} Cm", whiteBg, textMd - 1),
                       ],
                     ),
                     const Spacer(),
@@ -67,7 +102,8 @@ class _ShowHealthDataState extends State<ShowHealthData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("Calories / day", whiteBg, textSm),
-                        getInputLabel("1800 Cal", whiteBg, textMd - 1),
+                        getInputLabel(
+                            "${contents[0].result} Cal", whiteBg, textMd - 1),
                       ],
                     )
                   ],
