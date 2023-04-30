@@ -12,7 +12,7 @@ class LoginCommandsService {
     final response = await client.post(
       Uri.parse("$baseUrl/api/v1/login"),
       headers: {"content-type": "application/json"},
-      body: LoginModelToJson(data),
+      body: loginModelToJson(data),
     );
 
     var responseData = jsonDecode(response.body);

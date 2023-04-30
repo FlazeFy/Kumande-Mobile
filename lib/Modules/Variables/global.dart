@@ -65,6 +65,12 @@ List<String> tagListDummy = [
   "Healthy",
 ];
 
+String slctGender = "male";
+List<String> optionsGender = [
+  "male",
+  "female",
+];
+
 var tabcolHistoryConsume = [
   {"title": "All", "class": GetAllConsumeWPagination(type: "All")},
   {"title": "Food", "class": GetAllConsumeWPagination(type: "Food")},

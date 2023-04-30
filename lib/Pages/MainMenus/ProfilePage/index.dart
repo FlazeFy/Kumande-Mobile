@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Backgrounds/custom.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/edit_profile.dart';
 import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/get_profile_header.dart';
 import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_payment_data.dart';
 import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/show_body_data.dart';
@@ -34,12 +35,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       padding: EdgeInsets.all(paddingContentSM),
                       decoration: BoxDecoration(
                         color: whiteBg,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30)),
                       ),
                       child: Column(
-                        children: [],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [const EditProfile()],
                       )),
                 ])));
   }

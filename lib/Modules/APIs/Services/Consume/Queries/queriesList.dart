@@ -1,5 +1,5 @@
 import 'package:http/http.dart' show Client;
-import 'package:kumande/Modules/APIs/Models/Consume/Queries/queriesList.dart';
+import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries_list.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QueriesConsumeListService {
@@ -20,7 +20,7 @@ class QueriesConsumeListService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesConsumeListModelFromJsonWPaginate(response.body);
+      return queriesConsumeListModelFromJsonWPaginate(response.body);
     } else {
       return null;
     }

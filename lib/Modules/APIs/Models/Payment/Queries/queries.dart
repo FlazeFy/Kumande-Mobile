@@ -15,7 +15,7 @@ class QueriesPaymentLineChartModel {
   }
 }
 
-List<QueriesPaymentLineChartModel> QueriesPaymentLineChartModelFromJson(
+List<QueriesPaymentLineChartModel> queriesPaymentLineChartModelFromJson(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesPaymentLineChartModel>.from(

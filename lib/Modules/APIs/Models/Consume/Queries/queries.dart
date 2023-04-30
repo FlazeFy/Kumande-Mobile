@@ -51,7 +51,7 @@ class QueriesConsumeModel {
   }
 }
 
-List<QueriesConsumeModel> QueriesConsumeModelFromJsonWPaginate(
+List<QueriesConsumeModel> queriesConsumeModelFromJsonWPaginate(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesConsumeModel>.from(
@@ -73,7 +73,7 @@ class QueriesConsumePieChartModel {
   }
 }
 
-List<QueriesConsumePieChartModel> QueriesConsumePieChartModelFromJson(
+List<QueriesConsumePieChartModel> queriesConsumePieChartModelFromJson(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesConsumePieChartModel>.from(
@@ -95,7 +95,7 @@ class QueriesConsumeLineChartModel {
   }
 }
 
-List<QueriesConsumeLineChartModel> QueriesConsumeLineChartModelFromJson(
+List<QueriesConsumeLineChartModel> queriesConsumeLineChartModelFromJson(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesConsumeLineChartModel>.from(

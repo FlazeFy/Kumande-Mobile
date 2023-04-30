@@ -19,7 +19,7 @@ class QueriesScheduleService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesTodayScheduleModelFromJson(response.body);
+      return queriesTodayScheduleModelFromJson(response.body);
     } else {
       return null;
     }
@@ -38,7 +38,7 @@ class QueriesScheduleService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesMyScheduleModelFromJson(response.body);
+      return queriesMyScheduleModelFromJson(response.body);
     } else {
       return null;
     }

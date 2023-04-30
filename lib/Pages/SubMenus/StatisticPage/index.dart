@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostConsumeFrom.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostConsumeType.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/mostMainIng.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/totalDailyCal.dart';
-import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/totalSpending.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/most_consume_from.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/most_consume_type.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/most_main_ing.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/total_daily_cal.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/total_spending.dart';
 
 class StatisticPage extends StatefulWidget {
   const StatisticPage({Key key}) : super(key: key);

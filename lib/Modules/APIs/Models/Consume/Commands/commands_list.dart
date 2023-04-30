@@ -13,7 +13,7 @@ class AddConsumeListModel {
   }
 }
 
-String AddConsumeListModelToJson(AddConsumeListModel data) {
+String addConsumeListModelToJson(AddConsumeListModel data) {
   final jsonData = data.toJson();
   return json.encode(jsonData);
 }

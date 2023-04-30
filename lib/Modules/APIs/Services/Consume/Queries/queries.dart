@@ -21,7 +21,7 @@ class QueriesConsumeService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesConsumeModelFromJsonWPaginate(response.body);
+      return queriesConsumeModelFromJsonWPaginate(response.body);
     } else {
       return null;
     }
@@ -40,7 +40,7 @@ class QueriesConsumeService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesConsumePieChartModelFromJson(response.body);
+      return queriesConsumePieChartModelFromJson(response.body);
     } else {
       return null;
     }
@@ -59,7 +59,7 @@ class QueriesConsumeService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesConsumePieChartModelFromJson(response.body);
+      return queriesConsumePieChartModelFromJson(response.body);
     } else {
       return null;
     }
@@ -78,7 +78,7 @@ class QueriesConsumeService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesConsumePieChartModelFromJson(response.body);
+      return queriesConsumePieChartModelFromJson(response.body);
     } else {
       return null;
     }
@@ -99,7 +99,7 @@ class QueriesConsumeService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesConsumeLineChartModelFromJson(response.body);
+      return queriesConsumeLineChartModelFromJson(response.body);
     } else {
       return null;
     }

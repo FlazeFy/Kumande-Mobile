@@ -44,11 +44,12 @@ class _PostConsumeState extends State<PostConsume> {
         getInputLabel("Consume", primaryBg, textLg),
         const SizedBox(height: 10),
         getInputLabel("Name", textPrimary, textSm),
-        getInputTextMain(widget.consumeNameCtrl, "ex : Rendang", 50),
+        getInputTextMain(widget.consumeNameCtrl, "ex : Rendang", 50, false),
         getInputLabel("Provide", textPrimary, textSm),
-        getInputTextMain(widget.consumeProvideCtrl, "ex : Warung Budi", 50),
+        getInputTextMain(
+            widget.consumeProvideCtrl, "ex : Warung Budi", 50, false),
         getInputLabel("Main Ingredient", textPrimary, textSm),
-        getInputTextMain(widget.consumeMainIngCtrl, "ex : Meat", 50),
+        getInputTextMain(widget.consumeMainIngCtrl, "ex : Meat", 50, false),
         Row(
           children: [
             Expanded(

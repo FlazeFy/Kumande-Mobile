@@ -20,7 +20,7 @@ class QueriesPaymentService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesPaymentLineChartModelFromJson(response.body);
+      return queriesPaymentLineChartModelFromJson(response.body);
     } else {
       return null;
     }
@@ -40,7 +40,7 @@ class QueriesPaymentService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesPaymentLineChartModelFromJson(response.body);
+      return queriesPaymentLineChartModelFromJson(response.body);
     } else {
       return null;
     }

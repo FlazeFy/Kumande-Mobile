@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
-import 'package:kumande/Modules/APIs/Models/Consume/Commands/commandsList.dart';
+import 'package:kumande/Modules/APIs/Models/Consume/Commands/commands_list.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ConsumeListCommandsService {
@@ -21,7 +21,7 @@ class ConsumeListCommandsService {
     final response = await client.post(
       Uri.parse("$baseUrl/api/v1/list/create"),
       headers: header,
-      body: AddConsumeListModelToJson(data),
+      body: addConsumeListModelToJson(data),
     );
 
     var responseData = jsonDecode(response.body);

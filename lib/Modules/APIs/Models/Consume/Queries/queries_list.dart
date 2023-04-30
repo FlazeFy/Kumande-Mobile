@@ -36,7 +36,7 @@ class QueriesConsumeListModel {
   }
 }
 
-List<QueriesConsumeListModel> QueriesConsumeListModelFromJsonWPaginate(
+List<QueriesConsumeListModel> queriesConsumeListModelFromJsonWPaginate(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesConsumeListModel>.from(data['data']['data']

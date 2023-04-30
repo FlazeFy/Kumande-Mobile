@@ -50,7 +50,7 @@ class _PostConsumeListState extends State<PostConsumeList> {
         getInputLabel("Consume", primaryBg, textLg),
         const SizedBox(height: 10),
         getInputLabel("Name", textPrimary, textSm),
-        getInputTextMain(widget.listNameCtrl, "ex : healthy food", 50),
+        getInputTextMain(widget.listNameCtrl, "ex : healthy food", 50, false),
         const SizedBox(height: 10),
         Divider(
           height: paddingDivider,

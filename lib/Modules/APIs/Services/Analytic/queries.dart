@@ -20,7 +20,7 @@ class QueriesAnalyticService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesMultiAnalyticModelFromJson(response.body);
+      return queriesMultiAnalyticModelFromJson(response.body);
     } else {
       return null;
     }
@@ -39,7 +39,7 @@ class QueriesAnalyticService {
       headers: header,
     );
     if (response.statusCode == 200) {
-      return QueriesSpendLifeModelFromJSON(response.body);
+      return queriesSpendLifeModelFromJSON(response.body);
     } else {
       return null;
     }

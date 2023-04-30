@@ -28,7 +28,7 @@ class QueriesTodayScheduleModel {
   }
 }
 
-List<QueriesTodayScheduleModel> QueriesTodayScheduleModelFromJson(
+List<QueriesTodayScheduleModel> queriesTodayScheduleModelFromJson(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesTodayScheduleModel>.from(
@@ -52,7 +52,7 @@ class QueriesMyScheduleModel {
   }
 }
 
-List<QueriesMyScheduleModel> QueriesMyScheduleModelFromJson(String jsonData) {
+List<QueriesMyScheduleModel> queriesMyScheduleModelFromJson(String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesMyScheduleModel>.from(
       data['data'].map((item) => QueriesMyScheduleModel.fromJson(item)));

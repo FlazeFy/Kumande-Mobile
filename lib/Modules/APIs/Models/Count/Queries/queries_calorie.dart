@@ -19,7 +19,7 @@ class QueriesCountCalorieModel {
   }
 }
 
-List<QueriesCountCalorieModel> QueriesCountCalorieModelFromJson(
+List<QueriesCountCalorieModel> queriesCountCalorieModelFromJson(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesCountCalorieModel>.from(

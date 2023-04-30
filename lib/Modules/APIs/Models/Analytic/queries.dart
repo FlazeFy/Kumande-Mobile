@@ -19,7 +19,7 @@ class QueriesMultiAnalyticModel {
   }
 }
 
-List<QueriesMultiAnalyticModel> QueriesMultiAnalyticModelFromJson(
+List<QueriesMultiAnalyticModel> queriesMultiAnalyticModelFromJson(
     String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesMultiAnalyticModel>.from(
@@ -39,7 +39,7 @@ class QueriesSpendLifeModel {
   }
 }
 
-List<QueriesSpendLifeModel> QueriesSpendLifeModelFromJSON(String jsonData) {
+List<QueriesSpendLifeModel> queriesSpendLifeModelFromJSON(String jsonData) {
   final data = json.decode(jsonData);
   return List<QueriesSpendLifeModel>.from(
       data['data'].map((item) => QueriesSpendLifeModel.fromJson(item)));

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
+import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
-Widget getInputTextMain(ctrl, String title, int len) {
+Widget getInputTextMain(ctrl, String title, int len, bool secure) {
   return Container(
     padding: EdgeInsets.zero,
     child: TextFormField(
+      obscureText: secure,
       cursorColor: Colors.white,
       controller: ctrl,
       maxLength: len,
@@ -118,4 +120,20 @@ Widget getDropDownMain(
         }).toList(),
         onChanged: onChanged,
       ));
+}
+
+Widget getDatePicker(
+    DateTime ds, Function() actionPressed, String type, String view) {
+  return TextButton.icon(
+    style: TextButton.styleFrom(
+      textStyle: const TextStyle(fontSize: 16),
+      foregroundColor: textSecondary,
+    ),
+    onPressed: actionPressed,
+    icon: const Icon(
+      Icons.calendar_month,
+      size: 24.0,
+    ),
+    label: Text(getDateText(ds, type, view)),
+  );
 }

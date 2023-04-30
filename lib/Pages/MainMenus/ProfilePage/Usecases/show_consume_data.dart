@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Typography/text.dart';
+import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
 class ShowConsumeData extends StatefulWidget {
@@ -10,10 +12,54 @@ class ShowConsumeData extends StatefulWidget {
 }
 
 class _ShowConsumeDataState extends State<ShowConsumeData> {
+  QueriesConsumeService apiService;
+
+  @override
+  void initState() {
+    super.initState();
+    apiService = QueriesConsumeService();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return SafeArea(
+      maintainBottomViewPadding: false,
+      child: FutureBuilder(
+        future: apiService.getTotalConsumeByType(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<QueriesConsumePieChartModel>> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                  "Something wrong with message: ${snapshot.error.toString()}"),
+            );
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            List<QueriesConsumePieChartModel> contents = snapshot.data;
+            return _buildListView(contents);
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _buildListView(List<QueriesConsumePieChartModel> contents) {
     double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
+    int food, drink, snack = 0;
+
+    contents.forEach(
+      (e) {
+        if (e.ctx == "Food") {
+          food = e.total;
+        } else if (e.ctx == "Drink") {
+          drink = e.total;
+        } else if (e.ctx == "Snack") {
+          snack = e.total;
+        }
+      },
+    );
 
     return Container(
       margin: EdgeInsets.only(
@@ -51,7 +97,7 @@ class _ShowConsumeDataState extends State<ShowConsumeData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("Food", whiteBg, textSm),
-                        getInputLabel("20", whiteBg, textMd),
+                        getInputLabel("$food", whiteBg, textMd),
                       ],
                     ),
                     const Spacer(),
@@ -59,7 +105,7 @@ class _ShowConsumeDataState extends State<ShowConsumeData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("Drink", whiteBg, textSm),
-                        getInputLabel("13", whiteBg, textMd),
+                        getInputLabel("$drink", whiteBg, textMd),
                       ],
                     ),
                     const Spacer(),
@@ -67,7 +113,7 @@ class _ShowConsumeDataState extends State<ShowConsumeData> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         getInputLabel("Snack", whiteBg, textSm),
-                        getInputLabel("11", whiteBg, textMd),
+                        getInputLabel("$snack", whiteBg, textMd),
                       ],
                     )
                   ],

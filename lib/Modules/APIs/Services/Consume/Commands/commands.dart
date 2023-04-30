@@ -20,7 +20,7 @@ class ConsumeCommandsService {
     final response = await client.post(
       Uri.parse("$baseUrl/api/v1/consume/create"),
       headers: header,
-      body: AddConsumeModelToJson(data),
+      body: addConsumeModelToJson(data),
     );
 
     var responseData = jsonDecode(response.body);

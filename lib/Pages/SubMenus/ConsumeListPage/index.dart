@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:kumande/Pages/SubMenus/ConsumeListPage/Usecases/getAllConsumeList.dart';
+import 'package:kumande/Pages/SubMenus/ConsumeListPage/Usecases/get_all_consume_list.dart';
 
 class ConsumeListPage extends StatefulWidget {
   const ConsumeListPage({Key key}) : super(key: key);

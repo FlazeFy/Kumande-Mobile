@@ -41,7 +41,7 @@ class AddConsumeModel {
   }
 }
 
-String AddConsumeModelToJson(AddConsumeModel data) {
+String addConsumeModelToJson(AddConsumeModel data) {
   final jsonData = data.toJson();
   return json.encode(jsonData);
 }

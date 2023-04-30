@@ -98,7 +98,7 @@ Widget generateSelectedTag(list, call, res) {
   }
 }
 
-getTodayDayString(int i) {
+String getTodayDayString(int i) {
   if (i != null) {
     DateTime now = DateTime.now().add(Duration(days: i));
     String day = DateFormat('E').format(now);
@@ -118,5 +118,21 @@ getDateNowInt(String type) {
     return now.month;
   } else if (type == "day") {
     return now.day;
+  }
+}
+
+String getDateText(DateTime date, String type, String view) {
+  if (view == "datetime") {
+    if (date != null) {
+      return DateFormat("dd-MM-yy h:m").format(date).toString();
+    } else {
+      return "Set Date $type";
+    }
+  } else if (view == "date") {
+    if (date != null) {
+      return DateFormat("dd-MM-yy").format(date).toString();
+    } else {
+      return "Set Date $type";
+    }
   }
 }

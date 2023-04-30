@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:kumande/Pages/Landings/LoginPage/Usecases/PostLogin.dart';
+import 'package:kumande/Pages/Landings/LoginPage/Usecases/post_login.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
