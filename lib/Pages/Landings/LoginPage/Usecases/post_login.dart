@@ -73,7 +73,7 @@ class _PostLoginState extends State<PostLogin> {
 
                         if (status == "success") {
                           try {
-                            AuthModule().signInEmailPass(
+                            SignInModule().signInEmailPass(
                                 email: data.email, password: data.password);
                           } on FirebaseAuthException catch (e) {
                             showDialog<String>(

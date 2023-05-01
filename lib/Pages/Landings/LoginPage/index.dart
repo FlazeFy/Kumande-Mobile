@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/Landings/LoginPage/Usecases/post_login.dart';
+import 'package:kumande/Pages/Landings/RegisterPage/index.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -46,7 +47,32 @@ class _LoginPageState extends State<LoginPage> {
                         style:
                             TextStyle(color: Colors.white, fontSize: textSm)),
                   ])),
-              const PostLogin()
+              const PostLogin(),
+              Text("New user? please register first to use this app",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: textSm)),
+              Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        )),
+                        backgroundColor:
+                            MaterialStatePropertyAll<Color>(successBg),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterPage()),
+                        );
+                      },
+                      child: const Text("Register",
+                          style: TextStyle(fontSize: 15))))
             ],
           )),
     );
