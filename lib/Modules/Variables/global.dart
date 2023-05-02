@@ -42,6 +42,15 @@ List<String> optionsConsumeFilterOrder = [
   "Desc",
 ];
 
+String slctConsumeFilterLimit = "10";
+List<String> optionsConsumeFilterLimit = ["10", "25", "50", "100"];
+
+String slctConsumeFav = "no";
+List<String> optionsConsumeFav = [
+  "no",
+  "yes",
+];
+
 String slctConsumePaymentMethod = "GoPay";
 List<String> optionsConsumePaymentMethod = [
   "GoPay",
@@ -125,6 +134,7 @@ var tableCellSchedule = [
 
 // Navigation
 int page = 0;
+int pageConsume = 1;
 int monthCalendar = getDateNowInt("month");
 int yearCalendar = getDateNowInt("year");
 

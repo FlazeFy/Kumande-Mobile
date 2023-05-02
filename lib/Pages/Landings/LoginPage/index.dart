@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kumande/Components/Backgrounds/custom.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/Landings/LoginPage/Usecases/post_login.dart';
 import 'package:kumande/Pages/Landings/RegisterPage/index.dart';
@@ -17,10 +18,8 @@ class _LoginPageState extends State<LoginPage> {
     double fullWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Container(
-          height: fullHeight,
-          width: fullWidth,
-          color: primaryBg,
+      body: CustomPaint(
+          painter: CirclePainter(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(100),
                         )),
                         backgroundColor:
                             MaterialStatePropertyAll<Color>(successBg),

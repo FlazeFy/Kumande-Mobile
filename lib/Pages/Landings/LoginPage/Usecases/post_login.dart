@@ -54,7 +54,7 @@ class _PostLoginState extends State<PostLogin> {
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(100),
                     )),
                     backgroundColor: MaterialStatePropertyAll<Color>(successBg),
                   ),

@@ -1,5 +1,7 @@
 import 'package:http/http.dart' show Client;
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
+import 'package:kumande/Modules/Helpers/converter.dart';
+import 'package:kumande/Modules/Variables/global.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QueriesConsumeService {
@@ -7,7 +9,7 @@ class QueriesConsumeService {
   Client client = Client();
 
   Future<List<QueriesConsumeModel>> getAllConsume(
-      String type, String order) async {
+      int limit, String type, String order, String fav, int page) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token_key');
     final header = {
@@ -17,7 +19,7 @@ class QueriesConsumeService {
 
     final response = await client.get(
       Uri.parse(
-          "$baseUrl/api/v1/consume/limit/10/order/$order/favorite/0/type/$type"),
+          "$baseUrl/api/v1/consume/limit/$limit/order/$order/favorite/${convertFavorite(fav)}/type/$type?page=$page"),
       headers: header,
     );
     if (response.statusCode == 200) {

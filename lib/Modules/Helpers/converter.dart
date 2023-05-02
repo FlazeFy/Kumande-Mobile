@@ -38,6 +38,17 @@ String ucFirst(String val) {
   return res;
 }
 
+int convertFavorite(String val) {
+  int res;
+  if (val == "yes") {
+    res = 1;
+  } else {
+    res = 0;
+  }
+
+  return res;
+}
+
 // Make this multi response
 String getMessageResponseFromObject(val) {
   var res = "";

@@ -30,7 +30,8 @@ class _GetAllConsumeWPagination extends State<GetAllConsumeWPagination>
     return SafeArea(
       maintainBottomViewPadding: false,
       child: FutureBuilder(
-        future: apiService.getAllConsume(widget.type, slctConsumeFilterOrder),
+        future: apiService.getAllConsume(int.parse(slctConsumeFilterLimit),
+            widget.type, slctConsumeFilterOrder, slctConsumeFav, pageConsume),
         builder: (BuildContext context,
             AsyncSnapshot<List<QueriesConsumeModel>> snapshot) {
           if (snapshot.hasError) {

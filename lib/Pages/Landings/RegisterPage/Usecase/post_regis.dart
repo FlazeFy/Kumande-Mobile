@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:kumande/Components/Dialogs/failed.dart';
 import 'package:kumande/Components/Forms/input.dart';
-import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Components/Typography/text.dart';
 import 'package:kumande/Modules/APIs/Models/User/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/User/Commands/commands.dart';
@@ -112,90 +111,115 @@ class _PostRegisState extends State<PostRegis> {
               ],
             )
           ])),
-      Container(
-          margin: const EdgeInsets.only(top: 10),
-          alignment: Alignment.bottomCenter,
-          child: ElevatedButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                )),
-                backgroundColor: MaterialStatePropertyAll<Color>(successBg),
-              ),
-              onPressed: () async {
-                try {
-                  User user = await RegisterModule.registerUsingEmailPassword(
-                    email: emailCtrl.text,
-                    password: passCtrl.text,
-                  );
-                  if (user != null) {
-                    AddUserModel data = AddUserModel(
-                        firebaseId: user.uid,
-                        fullname: fnameCtrl.text,
-                        username: unameCtrl.text,
+      SizedBox(height: paddingContainerLG),
+      Row(
+        children: [
+          Container(
+              margin: const EdgeInsets.only(top: 10),
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    )),
+                    backgroundColor: MaterialStatePropertyAll<Color>(dangerBg),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Back to Login",
+                      style: TextStyle(fontSize: 15)))),
+          const Spacer(),
+          Container(
+              margin: const EdgeInsets.only(top: 10),
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    )),
+                    backgroundColor: MaterialStatePropertyAll<Color>(successBg),
+                  ),
+                  onPressed: () async {
+                    try {
+                      User user =
+                          await RegisterModule.registerUsingEmailPassword(
                         email: emailCtrl.text,
                         password: passCtrl.text,
-                        gender: slctGender,
-                        dateBorn: validateDate(dateBorn));
+                      );
+                      if (user != null) {
+                        AddUserModel data = AddUserModel(
+                            firebaseId: user.uid,
+                            fullname: fnameCtrl.text,
+                            username: unameCtrl.text,
+                            email: emailCtrl.text,
+                            password: passCtrl.text,
+                            gender: slctGender,
+                            dateBorn: validateDate(dateBorn));
 
-                    //Validator
-                    if (data.email.isNotEmpty && data.password.isNotEmpty) {
-                      apiService.addUser(data).then((response) {
-                        setState(() => isLoading = false);
-                        var status = response[0]['message'];
-                        var body = response[0]['body'];
+                        //Validator
+                        if (data.email.isNotEmpty && data.password.isNotEmpty) {
+                          apiService.addUser(data).then((response) {
+                            setState(() => isLoading = false);
+                            var status = response[0]['message'];
+                            var body = response[0]['body'];
 
-                        if (status == "success") {
-                          // try {
-                          //   SignInModule().signInEmailPass(
-                          //       email: data.email, password: data.password);
-                          // } on FirebaseAuthException catch (e) {
-                          //   showDialog<String>(
-                          //       context: context,
-                          //       builder: (BuildContext context) =>
-                          //           FailedDialog(text: e));
-                          // }
+                            if (status == "success") {
+                              // try {
+                              //   SignInModule().signInEmailPass(
+                              //       email: data.email, password: data.password);
+                              // } on FirebaseAuthException catch (e) {
+                              //   showDialog<String>(
+                              //       context: context,
+                              //       builder: (BuildContext context) =>
+                              //           FailedDialog(text: e));
+                              // }
 
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()),
-                          );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginPage()),
+                              );
+                            } else {
+                              showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      FailedDialog(text: body));
+                            }
+                          });
                         } else {
                           showDialog<String>(
                               context: context,
-                              builder: (BuildContext context) =>
-                                  FailedDialog(text: body));
+                              builder: (BuildContext context) => FailedDialog(
+                                  text:
+                                      "Register failed, field can't be empty"));
                         }
-                      });
-                    } else {
+                      } else {
+                        showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => FailedDialog(
+                                text:
+                                    "Create acc failed, please check your data"));
+                      }
+                    } catch (e) {
+                      String errorMessage = e.toString();
                       showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) => FailedDialog(
-                              text: "Register failed, field can't be empty"));
-                    }
-                  } else {
-                    showDialog<String>(
                         context: context,
-                        builder: (BuildContext context) => FailedDialog(
-                            text: "Create acc failed, please check your data"));
-                  }
-                } catch (e) {
-                  String errorMessage = e.toString();
-                  showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        FailedDialog(text: errorMessage),
-                  );
-                }
+                        builder: (BuildContext context) =>
+                            FailedDialog(text: errorMessage),
+                      );
+                    }
 
-                emailCtrl.clear();
-                passCtrl.clear();
-                fnameCtrl.clear();
-                unameCtrl.clear();
-              },
-              child: const Text("Submit", style: TextStyle(fontSize: 15))))
+                    emailCtrl.clear();
+                    passCtrl.clear();
+                    fnameCtrl.clear();
+                    unameCtrl.clear();
+                  },
+                  child: const Text("Submit", style: TextStyle(fontSize: 15)))),
+        ],
+      )
     ]);
   }
 }
