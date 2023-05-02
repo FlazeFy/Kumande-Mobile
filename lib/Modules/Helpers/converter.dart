@@ -45,16 +45,61 @@ String getMessageResponseFromObject(val) {
   if (val is String) {
     return val;
   } else {
-    var usernameErr = val['username'];
-    var passErr = val['password'];
+    if (val.containsKey('username') != null) {
+      var unameErr = val['username'];
 
-    if (usernameErr != null) {
-      res += "${usernameErr.join('\n')}";
+      if (unameErr != null) {
+        res += "${unameErr.join('\n')}";
+      }
     }
-    if (passErr != null) {
-      res += "${passErr.join('\n')}";
-    }
+    if (val.containsKey('fullname') != null) {
+      var fnameErr = val['fullname'];
 
+      if (fnameErr != null) {
+        res += "${fnameErr.join('\n')}";
+      }
+    }
+    if (val.containsKey('password')) {
+      var passErr = val['password'];
+      if (passErr != null) {
+        res += "${passErr.join('\n')}";
+      }
+    }
+    if (val.containsKey('email') != null) {
+      var emailErr = val['email'];
+
+      if (emailErr != null) {
+        res += "${emailErr.join('\n')}";
+      }
+    }
+    if (val.containsKey('firebase_id') != null) {
+      var fireIdErr = val['firebase_id'];
+
+      if (fireIdErr != null) {
+        res += "${fireIdErr.join('\n')}";
+      }
+    }
+    if (val.containsKey('gender') != null) {
+      var genderErr = val['gender'];
+
+      if (genderErr != null) {
+        res += "${genderErr.join('\n')}";
+      }
+    }
+    if (val.containsKey('image_url') != null) {
+      var imgUrlErr = val['image_url'];
+
+      if (imgUrlErr != null) {
+        res += "${imgUrlErr.join('\n')}";
+      }
+    }
+    if (val.containsKey('born_at') != null) {
+      var bornErr = val['born_at'];
+
+      if (bornErr != null) {
+        res += "${bornErr.join('\n')}";
+      }
+    }
     return res;
   }
 }

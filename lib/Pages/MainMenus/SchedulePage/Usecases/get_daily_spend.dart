@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Forms/calendar.dart';
 import 'package:kumande/Components/Navbars/bottom.dart';
-import 'package:kumande/Modules/APIs/Models/Payment/Queries/queries.dart';
-import 'package:kumande/Modules/APIs/Services/Payment/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries_payment.dart';
+import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries_payment.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 //import 'package:table_calendar/table_calendar.dart';
 

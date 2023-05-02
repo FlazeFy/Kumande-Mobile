@@ -1,5 +1,5 @@
 import 'package:http/http.dart' show Client;
-import 'package:kumande/Modules/APIs/Models/Payment/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QueriesPaymentService {

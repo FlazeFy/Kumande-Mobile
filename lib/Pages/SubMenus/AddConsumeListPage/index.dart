@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Components/Dialogs/failed.dart';
 import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Commands/commands_list.dart';
-import 'package:kumande/Modules/APIs/Services/Consume/Commands/commandsList.dart';
+import 'package:kumande/Modules/APIs/Services/Consume/Commands/commands_list.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumeListPage/Usecases/postConsumeList.dart';
