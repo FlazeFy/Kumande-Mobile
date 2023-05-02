@@ -65,6 +65,8 @@ List<String> optionsConsumePaymentMethod = [
 
 List<String> selectedTagConsume = [];
 List<String> selectedTagConsumeList = [];
+List<String> selectedProvideList = [];
+List<String> provideList = [];
 
 List<String> tagListDummy = [
   "Cheap",

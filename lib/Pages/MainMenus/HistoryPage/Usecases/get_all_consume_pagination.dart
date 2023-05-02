@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/consume.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
@@ -27,11 +29,18 @@ class _GetAllConsumeWPagination extends State<GetAllConsumeWPagination>
     //double fullHeight = MediaQuery.of(context).size.height;
     //double fullWidth = MediaQuery.of(context).size.width;
 
+    String provide = jsonEncode(selectedProvideList);
+
     return SafeArea(
       maintainBottomViewPadding: false,
       child: FutureBuilder(
-        future: apiService.getAllConsume(int.parse(slctConsumeFilterLimit),
-            widget.type, slctConsumeFilterOrder, slctConsumeFav, pageConsume),
+        future: apiService.getAllConsume(
+            int.parse(slctConsumeFilterLimit),
+            widget.type,
+            slctConsumeFilterOrder,
+            slctConsumeFav,
+            pageConsume,
+            provide),
         builder: (BuildContext context,
             AsyncSnapshot<List<QueriesConsumeModel>> snapshot) {
           if (snapshot.hasError) {

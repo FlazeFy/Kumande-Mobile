@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Forms/input.dart';
 import 'package:kumande/Components/Navbars/bottom.dart';
+import 'package:kumande/Components/Navbars/right/Usecases/get_most_provide.dart';
 import 'package:kumande/Components/Typography/text.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
@@ -15,20 +16,17 @@ class FilterConsume extends StatefulWidget {
 class _FilterConsumeState extends State<FilterConsume> {
   @override
   Widget build(BuildContext context) {
-    //double fullHeight = MediaQuery.of(context).size.height;
+    double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
     return Drawer(
         child: Container(
             padding: EdgeInsets.only(
-                top: fullWidth * 0.15,
-                left: paddingContainerLG,
-                right: paddingContainerLG),
+                left: paddingContainerLG, right: paddingContainerLG),
             decoration: BoxDecoration(color: whiteBg),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+            child: ListView(
               children: [
+                SizedBox(height: fullHeight * 0.05),
                 Container(
                     margin: EdgeInsets.only(bottom: paddingContainerLG),
                     child: Text("Control Panel",
@@ -83,6 +81,11 @@ class _FilterConsumeState extends State<FilterConsume> {
                 SizedBox(
                   height: paddingContainerLG,
                 ),
+                getInputLabel("Filter By Provide", textPrimary, textSm),
+                const GetConsumeProvide(),
+                SizedBox(
+                  height: paddingContainerLG,
+                ),
                 ElevatedButton(
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -103,7 +106,8 @@ class _FilterConsumeState extends State<FilterConsume> {
                   },
                   child: Text("Apply Changes",
                       style: TextStyle(fontSize: textSm, color: whiteBg)),
-                )
+                ),
+                SizedBox(height: fullHeight * 0.05),
               ],
             )));
   }

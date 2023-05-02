@@ -53,6 +53,29 @@ Widget getButtonTag(title, Function onPress, call, res, bool isDeleted) {
                 onPress(selectedTagConsumeList.add(title));
               }
             }
+          } else if (res == "tag_consume_filter") {
+            if (selectedProvideList.isNotEmpty) {
+              if (!selectedProvideList.contains(title) ||
+                  !provideList.contains(title)) {
+                if (isDeleted) {
+                  onPress(provideList.add(title));
+                  onPress(
+                      selectedProvideList.removeWhere((item) => item == title));
+                } else {
+                  onPress(provideList.removeWhere((item) => item == title));
+                  onPress(selectedProvideList.add(title));
+                }
+              }
+            } else {
+              if (isDeleted) {
+                onPress(provideList.add(title));
+                onPress(
+                    selectedProvideList.removeWhere((item) => item == title));
+              } else {
+                onPress(provideList.removeWhere((item) => item == title));
+                onPress(selectedProvideList.add(title));
+              }
+            }
           }
 
           refreshPage(call);

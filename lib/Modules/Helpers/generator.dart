@@ -85,7 +85,7 @@ Widget generateTag(list, call, res) {
 Widget generateSelectedTag(list, call, res) {
   if (list.isNotEmpty) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      getInputLabel("Selected Tag", primaryBg, textLg),
+      getInputLabel("Selected Tag", textPrimary, textSm),
       Wrap(
           runSpacing: -5,
           spacing: 5,
