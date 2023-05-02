@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/most_consume_from.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/most_consume_provide.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/most_consume_type.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/most_main_ing.dart';
 import 'package:kumande/Pages/SubMenus/StatisticPage/Usecases/total_daily_cal.dart';
@@ -27,6 +28,7 @@ class _StatisticPageState extends State<StatisticPage> {
         children: const [
           MostConsumeType(),
           MostConsumeFrom(),
+          MostConsumeProvide(),
           MostMainIngredient(),
           TotalSpending(),
           TotalDailyCal()
