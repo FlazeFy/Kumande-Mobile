@@ -22,7 +22,7 @@ class _AddConsumePageState extends State<AddConsumePage> {
   var consumeProvideCtrl = TextEditingController();
   var consumeMainIngCtrl = TextEditingController();
   var consumeCommentCtrl = TextEditingController();
-  int consumeCalCtrl;
+  int consumeCalCtrl = 120;
   int consumePriceCtrl;
   ConsumeCommandsService apiService;
 

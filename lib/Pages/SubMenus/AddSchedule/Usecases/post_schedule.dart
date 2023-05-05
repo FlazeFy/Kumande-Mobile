@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:kumande/Components/Forms/input.dart';
 import 'package:kumande/Components/Typography/text.dart';
-import 'package:kumande/Modules/APIs/Services/Consume/Commands/commands_list.dart';
 import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
@@ -15,7 +14,8 @@ class PostSchedule extends StatefulWidget {
       this.setConsumeCal,
       this.consumeProvider,
       this.consumeMainIng,
-      this.scheduleTime})
+      this.scheduleTime,
+      this.setScheduleTime})
       : super(key: key);
   TextEditingController scheduleDesc;
   TextEditingController scheduleConsume;
@@ -24,31 +24,15 @@ class PostSchedule extends StatefulWidget {
   DateTime scheduleTime;
 
   final Function(double) setConsumeCal;
+  final Function(DateTime) setScheduleTime;
 
   @override
   State<PostSchedule> createState() => _PostScheduleState();
 }
 
 class _PostScheduleState extends State<PostSchedule> {
-  var scheduleConsume = TextEditingController();
-  var scheduleDesc = TextEditingController();
-  ConsumeListCommandsService apiService;
-
-  @override
-  void initState() {
-    super.initState();
-    apiService = ConsumeListCommandsService();
-  }
-
   void _refreshPage() {
     setState(() {});
-  }
-
-  @override
-  void dispose() {
-    scheduleDesc.dispose();
-    scheduleConsume.dispose();
-    super.dispose();
   }
 
   @override
@@ -62,7 +46,8 @@ class _PostScheduleState extends State<PostSchedule> {
       children: [
         getInputLabel("Consume", primaryBg, textLg),
         getInputLabel("Name", textPrimary, textSm),
-        getInputTextMain(widget.scheduleDesc, "ex : healthy food", 50, false),
+        getInputTextMain(
+            widget.scheduleConsume, "ex : healthy food", 50, false),
         getInputLabel("Provide", textPrimary, textSm),
         getInputTextMain(widget.consumeProvider, "ex : Warung Budi", 50, false),
         getInputLabel("Main Ingredient", textPrimary, textSm),
@@ -100,7 +85,7 @@ class _PostScheduleState extends State<PostSchedule> {
         ),
         getInputLabel("Schedule", primaryBg, textLg),
         const SizedBox(height: 10),
-        getInputDescMain(widget.scheduleConsume,
+        getInputDescMain(widget.scheduleDesc,
             "ex : vegetables, fruits, juice, etc", 255, 5, 5),
         Row(
           children: [
@@ -142,7 +127,7 @@ class _PostScheduleState extends State<PostSchedule> {
                         showTitleActions: true,
                         showSecondsColumn: false, onConfirm: (date) {
                       setState(() {
-                        widget.scheduleTime = date;
+                        widget.setScheduleTime(date);
                       });
                     },
                         currentTime: DateTime(now.year, now.month, now.day),

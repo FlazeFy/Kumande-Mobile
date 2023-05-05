@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
-import 'package:kumande/Modules/APIs/Models/Consume/Commands/commands.dart';
+import 'package:kumande/Modules/APIs/Models/Schedule/Commands/commands.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ConsumeCommandsService {
+class ScheduleCommandsService {
   final String baseUrl = "http://10.0.2.2:8000";
   Client client = Client();
 
-  Future<List<Map<String, dynamic>>> addConsume(AddConsumeModel data) async {
+  Future<List<Map<String, dynamic>>> addSchedule(AddScheduleModel data) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token_key');
     final header = {
@@ -18,9 +18,9 @@ class ConsumeCommandsService {
     };
 
     final response = await client.post(
-      Uri.parse("$baseUrl/api/v1/consume/create"),
+      Uri.parse("$baseUrl/api/v1/schedule/create"),
       headers: header,
-      body: addConsumeModelToJson(data),
+      body: addScheduleModelToJson(data),
     );
 
     var responseData = jsonDecode(response.body);

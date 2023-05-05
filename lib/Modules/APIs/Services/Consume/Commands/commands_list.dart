@@ -44,7 +44,6 @@ class ConsumeListCommandsService {
         }
       ];
     } else {
-      // Check this shit
       return [
         {
           "message": responseData['message'],

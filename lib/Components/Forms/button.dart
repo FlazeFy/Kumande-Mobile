@@ -87,7 +87,7 @@ Widget getButtonTag(title, Function onPress, call, res, bool isDeleted) {
           )),
           backgroundColor: MaterialStatePropertyAll<Color>(primaryBg),
         ),
-        child: Text(title, style: TextStyle(fontSize: textSm)),
+        child: Text(title['tag_name'], style: TextStyle(fontSize: textSm)),
       ));
 }
 

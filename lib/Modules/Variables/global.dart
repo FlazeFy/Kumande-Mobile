@@ -81,17 +81,21 @@ List<String> optionsConsumePaymentMethod = [
   "Cuppon",
 ];
 
-List<String> selectedTagConsume = [];
-List<String> selectedTagConsumeList = [];
+List<Map<String, dynamic>> selectedTagConsume = [];
+List<Map<String, dynamic>> selectedTagConsumeList = [];
 List<String> selectedProvideList = [];
 List<String> provideList = [];
 
-List<String> tagListDummy = [
-  "Cheap",
-  "Tasty",
-  "Spicy",
-  "Fast Food",
-  "Healthy",
+List<Map<String, dynamic>> tagListDummy = [
+  {"slug_name": "cheap", "tag_name": "Cheap"},
+  {"slug_name": "tasty", "tag_name": "Tasty"},
+  {"slug_name": "chocolate", "tag_name": "Chocolate"},
+  {"slug_name": "healthy", "tag_name": "Healthy"},
+  {"slug_name": "expensive", "tag_name": "Expensive"},
+  {"slug_name": "fruit", "tag_name": "Fruit"},
+  {"slug_name": "salad", "tag_name": "Salad"},
+  {"slug_name": "fast-food", "tag_name": "Fast Food"},
+  {"slug_name": "cafein", "tag_name": "Cafein"},
 ];
 
 String slctGender = "male";

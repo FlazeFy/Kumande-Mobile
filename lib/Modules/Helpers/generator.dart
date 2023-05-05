@@ -124,7 +124,7 @@ getDateNowInt(String type) {
 String getDateText(DateTime date, String type, String view) {
   if (view == "datetime") {
     if (date != null) {
-      return DateFormat("dd-MM-yy hh:mm").format(date).toString();
+      return DateFormat("dd-MM-yy HH:mm").format(date).toString();
     } else {
       return "Set Date $type";
     }
@@ -136,7 +136,7 @@ String getDateText(DateTime date, String type, String view) {
     }
   } else if (view == "time") {
     if (date != null) {
-      return DateFormat("hh:mm").format(date).toString();
+      return DateFormat("HH:mm").format(date).toString();
     } else {
       return "Set Time $type";
     }

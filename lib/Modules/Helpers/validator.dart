@@ -7,3 +7,11 @@ validateDate(DateTime date) {
     return "null";
   }
 }
+
+validateTime(DateTime date) {
+  if (date != null && date != "null") {
+    return DateFormat("HH:mm").format(date).toString();
+  } else {
+    return "null";
+  }
+}
