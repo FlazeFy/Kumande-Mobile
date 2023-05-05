@@ -69,7 +69,8 @@ class _PostConsumeListState extends State<PostConsumeList> {
         generateTag(tagListDummy, _refreshPage, "tag_consume_list"),
         const SizedBox(height: 10),
         generateSelectedTag(
-            selectedTagConsumeList, _refreshPage, "tag_consume_list")
+            selectedTagConsumeList, _refreshPage, "tag_consume_list"),
+        const SizedBox(height: 50),
       ],
     );
   }

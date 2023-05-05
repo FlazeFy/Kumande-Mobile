@@ -137,7 +137,8 @@ class _PostConsumeState extends State<PostConsume> {
         ),
         getInputLabel("My Tag", primaryBg, textLg),
         generateTag(tagListDummy, _refreshPage, "tag_consume"),
-        generateSelectedTag(selectedTagConsume, _refreshPage, "tag_consume")
+        generateSelectedTag(selectedTagConsume, _refreshPage, "tag_consume"),
+        const SizedBox(height: 50),
       ],
     );
   }

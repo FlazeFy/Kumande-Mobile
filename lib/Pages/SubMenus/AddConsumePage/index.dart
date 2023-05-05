@@ -8,7 +8,7 @@ import 'package:kumande/Modules/APIs/Models/Consume/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/Consume/Commands/commands.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:kumande/Pages/SubMenus/AddConsumePage/Usecases/PostConsume.dart';
+import 'package:kumande/Pages/SubMenus/AddConsumePage/Usecases/post_consume.dart';
 
 class AddConsumePage extends StatefulWidget {
   const AddConsumePage({Key key}) : super(key: key);

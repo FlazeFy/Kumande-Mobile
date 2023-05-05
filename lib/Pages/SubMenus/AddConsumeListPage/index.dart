@@ -7,7 +7,7 @@ import 'package:kumande/Modules/APIs/Models/Consume/Commands/commands_list.dart'
 import 'package:kumande/Modules/APIs/Services/Consume/Commands/commands_list.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
-import 'package:kumande/Pages/SubMenus/AddConsumeListPage/Usecases/postConsumeList.dart';
+import 'package:kumande/Pages/SubMenus/AddConsumeListPage/Usecases/post_consume_list.dart';
 import 'package:kumande/Pages/SubMenus/ConsumeListPage/index.dart';
 
 class AddConsumeListPage extends StatefulWidget {

@@ -8,6 +8,7 @@ import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_daily_calorie.dart';
 import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_daily_spend.dart';
 import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_my_schedule.dart';
+import 'package:kumande/Pages/SubMenus/AddSchedule/index.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({Key key}) : super(key: key);
@@ -96,8 +97,13 @@ class _SchedulePageState extends State<SchedulePage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: successBg,
-        onPressed: () {},
-        tooltip: 'Increment',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddSchedulePage()),
+          );
+        },
+        tooltip: 'Add Schedule',
         child: const Icon(Icons.add),
       ),
     );

@@ -36,6 +36,24 @@ List<String> optionsConsumeType = [
   "Snack",
 ];
 
+String slctScheduleCat = "Breakfast";
+List<String> optionsScheduleCat = [
+  "Breakfast",
+  "Lunch",
+  "Dinner",
+];
+
+String slctScheduleDay = "Monday";
+List<String> optionsScheduleDay = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
 String slctConsumeFilterOrder = "Desc";
 List<String> optionsConsumeFilterOrder = [
   "Asc",
