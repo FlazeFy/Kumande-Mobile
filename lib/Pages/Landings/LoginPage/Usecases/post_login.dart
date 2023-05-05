@@ -6,7 +6,7 @@ import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Components/Typography/text.dart';
 import 'package:kumande/Modules/APIs/Models/Auth/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/Auth/Commands/commands.dart';
-import 'package:kumande/Modules/Firebases/Auths/auth.dart';
+import 'package:kumande/Modules/Firebases/Auths/login.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
 class PostLogin extends StatefulWidget {

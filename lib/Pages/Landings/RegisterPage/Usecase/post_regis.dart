@@ -6,7 +6,7 @@ import 'package:kumande/Components/Forms/input.dart';
 import 'package:kumande/Components/Typography/text.dart';
 import 'package:kumande/Modules/APIs/Models/User/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/User/Commands/commands.dart';
-import 'package:kumande/Modules/Firebases/Auths/auth.dart';
+import 'package:kumande/Modules/Firebases/Auths/register.dart';
 import 'package:kumande/Modules/Helpers/validator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
