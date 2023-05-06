@@ -1,7 +1,6 @@
 import 'package:http/http.dart' show Client;
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
 import 'package:kumande/Modules/Helpers/converter.dart';
-import 'package:kumande/Modules/Variables/global.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QueriesConsumeService {

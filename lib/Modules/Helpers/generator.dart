@@ -134,6 +134,12 @@ String getDateText(DateTime date, String type, String view) {
     } else {
       return "Set Date $type";
     }
+  } else if (view == "datev2") {
+    if (date != null) {
+      return DateFormat("yyyy-MM-dd").format(date).toString();
+    } else {
+      return "Set Date $type";
+    }
   } else if (view == "time") {
     if (date != null) {
       return DateFormat("HH:mm").format(date).toString();

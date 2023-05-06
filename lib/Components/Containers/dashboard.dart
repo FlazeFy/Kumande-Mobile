@@ -3,8 +3,8 @@ import 'package:kumande/Components/Icons/icon.dart';
 import 'package:kumande/Modules/Helpers/converter.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
-Widget getDashboardContainer(double width, int total, String title, String url,
-    colorStart, colorEnd, ctx, route) {
+Widget getDashboardContainer(double width, String total, String title,
+    String url, colorStart, colorEnd, ctx, route) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
@@ -38,18 +38,18 @@ Widget getDashboardContainer(double width, int total, String title, String url,
                         margin: const EdgeInsets.only(bottom: 15),
                         child: Text(title,
                             textAlign: TextAlign.end,
-                            style: const TextStyle(
-                                color: Color(0xFF212121),
+                            style: TextStyle(
+                                color: whiteBg,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500))),
                     Container(
                       alignment: Alignment.centerRight,
                       width: width * 0.45,
-                      child: Text(total.toString(),
+                      child: Text(total,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              color: Color(0xFF212121),
+                          style: TextStyle(
+                              color: whiteBg,
                               fontSize: 22,
                               fontWeight: FontWeight.bold)),
                     ),

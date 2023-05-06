@@ -23,6 +23,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     top: fullHeight * 0.1,
                     right: fullWidth * 0.065,
                     left: fullWidth * 0.065),
-                children: [const PostRegis()])));
+                children: const [PostRegis()])));
   }
 }

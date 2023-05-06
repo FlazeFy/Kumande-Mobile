@@ -45,7 +45,7 @@ class _ShowHealthDataState extends State<ShowHealthData> {
   }
 
   Widget _buildListView(List<QueriesCountCalorieModel> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
+    // double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
     return Container(

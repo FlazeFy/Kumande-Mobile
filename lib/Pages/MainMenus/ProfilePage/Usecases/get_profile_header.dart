@@ -6,6 +6,8 @@ import 'package:kumande/Modules/Variables/style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowProfileHeader extends StatelessWidget {
+  const ShowProfileHeader({Key key}) : super(key: key);
+
   Future<UserMiniProfile> getToken() async {
     final prefs = await SharedPreferences.getInstance();
     final username = prefs.getString('username_key');

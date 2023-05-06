@@ -52,8 +52,8 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Widget _buildListView(List<UserProfileModel> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
-    double fullWidth = MediaQuery.of(context).size.width;
+    // double fullHeight = MediaQuery.of(context).size.height;
+    // double fullWidth = MediaQuery.of(context).size.width;
     genderCtrl = contents[0].gender;
     fullnameCtrl.text = contents[0].fullname;
     passwordCtrl.text = contents[0].password;

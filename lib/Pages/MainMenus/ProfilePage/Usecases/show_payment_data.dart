@@ -46,7 +46,7 @@ class _ShowPaymentDataState extends State<ShowPaymentData> {
   }
 
   Widget _buildListView(List<QueriesSpendLifeModel> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
+    // double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
 
     return Container(

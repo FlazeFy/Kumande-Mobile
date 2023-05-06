@@ -105,7 +105,7 @@ class _GetMyScheduleState extends State<GetMySchedule> {
 
   @override
   Widget build(BuildContext context) {
-    double fullWidth = MediaQuery.of(context).size.width;
+    // double fullWidth = MediaQuery.of(context).size.width;
 
     return Padding(
         padding: EdgeInsets.all(paddingContainerLG),

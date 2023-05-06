@@ -17,7 +17,7 @@ class _FilterConsumeState extends State<FilterConsume> {
   @override
   Widget build(BuildContext context) {
     double fullHeight = MediaQuery.of(context).size.height;
-    double fullWidth = MediaQuery.of(context).size.width;
+    // double fullWidth = MediaQuery.of(context).size.width;
 
     return Drawer(
         child: Container(

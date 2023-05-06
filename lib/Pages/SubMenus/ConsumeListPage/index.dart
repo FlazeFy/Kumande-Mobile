@@ -13,7 +13,7 @@ class ConsumeListPage extends StatefulWidget {
 class _ConsumeListPageState extends State<ConsumeListPage> {
   @override
   Widget build(BuildContext context) {
-    double fullHeight = MediaQuery.of(context).size.height;
+    // double fullHeight = MediaQuery.of(context).size.height;
     //double fullWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(

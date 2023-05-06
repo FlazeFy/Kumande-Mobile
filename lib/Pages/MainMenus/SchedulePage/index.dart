@@ -52,7 +52,6 @@ class _SchedulePageState extends State<SchedulePage> {
     );
   }
 
-  @override
   Widget _buildListView(List<QueriesMyScheduleModel> contents) {
     double fullHeight = MediaQuery.of(context).size.height;
     //double fullWidth = MediaQuery.of(context).size.width;

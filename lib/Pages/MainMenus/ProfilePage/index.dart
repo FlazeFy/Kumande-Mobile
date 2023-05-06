@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
             child: ListView(
                 padding: EdgeInsets.only(top: fullHeight * 0.035),
                 children: [
-                  ShowProfileHeader(),
+                  const ShowProfileHeader(),
                   const ShowPaymentData(),
                   const ShowHealthData(),
                   const ShowConsumeData(),
@@ -41,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [const EditProfile()],
+                        children: const [EditProfile()],
                       )),
                 ])));
   }

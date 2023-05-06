@@ -32,10 +32,6 @@ class _AddConsumePageState extends State<AddConsumePage> {
     apiService = ConsumeCommandsService();
   }
 
-  void _refreshPage() {
-    setState(() {});
-  }
-
   @override
   void dispose() {
     consumeNameCtrl.dispose();

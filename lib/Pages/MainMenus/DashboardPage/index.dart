@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/get_analytic_payment_month.dart';
+import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/get_fullfill_calorie.dart';
 import 'package:kumande/Pages/MainMenus/DashboardPage/Usecases/get_today_schedule.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumeListPage/index.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumePage/index.dart';
@@ -96,7 +97,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     child: Column(children: [
                       getDashboardContainer(
                           fullWidth,
-                          14,
+                          14.toString(),
                           "Consume List",
                           "Collection.png",
                           containerBgThird,
@@ -106,13 +107,14 @@ class _DashboardPageState extends State<DashboardPage> {
                       const SizedBox(height: 10),
                       getDashboardContainer(
                           fullWidth,
-                          3,
+                          3.toString(),
                           "Statistic",
                           "Statistics.png",
                           primaryBg,
-                          containerBgSecondary,
+                          secondaryBg,
                           context,
                           const StatisticPage()),
+                      GetFulfillCalorie(),
                       GetAnalyticPaymentMonth()
                     ]))
               ])

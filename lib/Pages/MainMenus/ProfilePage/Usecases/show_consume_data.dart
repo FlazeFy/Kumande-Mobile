@@ -45,7 +45,7 @@ class _ShowConsumeDataState extends State<ShowConsumeData> {
   }
 
   Widget _buildListView(List<QueriesConsumePieChartModel> contents) {
-    double fullHeight = MediaQuery.of(context).size.height;
+    // double fullHeight = MediaQuery.of(context).size.height;
     double fullWidth = MediaQuery.of(context).size.width;
     int food, drink, snack = 0;
 

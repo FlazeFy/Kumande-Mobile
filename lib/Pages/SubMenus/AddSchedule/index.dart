@@ -33,10 +33,6 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
     apiService = ScheduleCommandsService();
   }
 
-  void _refreshPage() {
-    setState(() {});
-  }
-
   @override
   void dispose() {
     scheduleDesc.dispose();
