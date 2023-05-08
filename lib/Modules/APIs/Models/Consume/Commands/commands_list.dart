@@ -4,12 +4,19 @@ import 'dart:convert';
 class AddConsumeListModel {
   String listName;
   String listDesc;
+  String fireId;
   var listTag; // Array
 
-  AddConsumeListModel({this.listName, this.listDesc, this.listTag});
+  AddConsumeListModel(
+      {this.listName, this.fireId, this.listDesc, this.listTag});
 
   Map<String, dynamic> toJson() {
-    return {"list_name": listName, "list_desc": listDesc, "list_tag": listTag};
+    return {
+      "firebase_id": fireId,
+      "list_name": listName,
+      "list_desc": listDesc,
+      "list_tag": listTag
+    };
   }
 }
 

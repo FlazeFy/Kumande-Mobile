@@ -5,6 +5,7 @@ import 'package:kumande/Components/Dialogs/failed.dart';
 import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Commands/commands_list.dart';
 import 'package:kumande/Modules/APIs/Services/Consume/Commands/commands_list.dart';
+import 'package:kumande/Modules/Firebases/Firestores/Consume/commands_list.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/SubMenus/AddConsumeListPage/Usecases/post_consume_list.dart';
@@ -21,11 +22,13 @@ class _AddConsumeListPageState extends State<AddConsumeListPage> {
   var listDescCtrl = TextEditingController();
   var listNameCtrl = TextEditingController();
   ConsumeListCommandsService apiService;
+  ConsumeListCommandsFirestore fireService;
 
   @override
   void initState() {
     super.initState();
     apiService = ConsumeListCommandsService();
+    fireService = ConsumeListCommandsFirestore();
   }
 
   @override
@@ -56,40 +59,50 @@ class _AddConsumeListPageState extends State<AddConsumeListPage> {
           AddConsumeListModel data = AddConsumeListModel(
               listName: listNameCtrl.text,
               listDesc: listDescCtrl.text,
-              listTag: jsonEncode(selectedTagConsumeList)); // for now
+              listTag: selectedTagConsumeList);
 
-          //Validator
-          if (data.listName.isNotEmpty && data.listDesc.isNotEmpty) {
-            apiService.addConsumeList(data).then((response) {
-              setState(() => _isLoading = false);
-              var status = response[0]['status'];
-              var body = response[0]['body'];
+          // Firebase
+          try {
+            var res = await fireService.addConsumeList(data);
+            data.fireId = res;
+            data.listTag = jsonEncode(selectedTagConsumeList);
 
-              if (status == "success") {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ConsumeListPage()),
-                );
-                setState(() {
-                  page = 1;
-                });
-              } else {
-                showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        FailedDialog(text: body));
-                // print(status);
+            // API
+            if (data.listName.isNotEmpty && data.listDesc.isNotEmpty) {
+              apiService.addConsumeList(data).then((response) {
+                setState(() => _isLoading = false);
+                var status = response[0]['status'];
+                var body = response[0]['body'];
 
-                listNameCtrl.clear();
-                listDescCtrl.clear();
-              }
-            });
-          } else {
+                if (status == "success") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ConsumeListPage()),
+                  );
+                  setState(() {
+                    page = 1;
+                  });
+                } else {
+                  showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          FailedDialog(text: body));
+
+                  listNameCtrl.clear();
+                  listDescCtrl.clear();
+                }
+              });
+            } else {
+              showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => FailedDialog(
+                      text: "Add list, some field can't be empty"));
+            }
+          } catch (error) {
             showDialog<String>(
                 context: context,
-                builder: (BuildContext context) =>
-                    FailedDialog(text: "Add list, some field can't be empty"));
+                builder: (BuildContext context) => FailedDialog(text: error));
           }
         },
         tooltip: 'Save',

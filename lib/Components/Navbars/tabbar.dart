@@ -7,7 +7,9 @@ Widget getTabBar(height, ctrl, title, titleColor, col) {
         margin: const EdgeInsets.only(left: 10),
         child: Text(title,
             style: TextStyle(
-                color: titleColor, fontSize: 20, fontWeight: FontWeight.bold))),
+                color: titleColor,
+                fontSize: textLg,
+                fontWeight: FontWeight.bold))),
     Container(
       margin: const EdgeInsets.only(top: 10),
       child: TabBar(

@@ -20,9 +20,10 @@ double iconXSM = 12.5;
 
 // Text Size
 double textJumbo = 33.0;
-double textLg = 19.0;
+double textLg = 20.0;
 double textMd = 16.0;
 double textSm = 13.5;
+double textXsm = 10.5;
 
 // Padding
 double paddingDivider = 12;
