@@ -29,7 +29,7 @@ class ConsumeCommandsService {
       return [
         {
           "status": responseData['status'],
-          "message": responseData['message'],
+          "body": responseData['message'],
           "data": responseData['data']
         }
       ];
@@ -37,7 +37,7 @@ class ConsumeCommandsService {
       // Validation failed
       return [
         {
-          "message": responseData['message'],
+          "body": responseData['result'],
           "status": responseData['status'],
           "data": null
         }
@@ -46,7 +46,7 @@ class ConsumeCommandsService {
       return [
         {
           "message": responseData['message'],
-          "status": responseData['status'],
+          "body": responseData['status'],
           "data": null
         }
       ];

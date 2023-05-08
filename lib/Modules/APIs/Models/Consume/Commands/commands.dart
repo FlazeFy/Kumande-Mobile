@@ -4,6 +4,7 @@ import 'dart:convert';
 class AddConsumeModel {
   String consumeType;
   String consumeName;
+  String fireId;
   var consumeDetail; // Array
   String consumeFrom;
   int isFavorite; // Bool
@@ -15,6 +16,7 @@ class AddConsumeModel {
 
   AddConsumeModel(
       {this.consumeType,
+      this.fireId,
       this.consumeName,
       this.consumeDetail,
       this.consumeFrom,
@@ -28,6 +30,7 @@ class AddConsumeModel {
   Map<String, dynamic> toJson() {
     return {
       "consume_type": consumeType,
+      "firebase_id": fireId,
       "consume_name": consumeName,
       "consume_detail": consumeDetail,
       "consume_from": consumeFrom,

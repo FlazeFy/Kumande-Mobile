@@ -31,7 +31,7 @@ class UserCommandsService {
     } else if (response.statusCode == 422) {
       // Validation failed
       return [
-        {"message": "failed", "body": responseData['message'], "token": null}
+        {"message": "failed", "body": responseData['result'], "token": null}
       ];
     } else if (response.statusCode == 401) {
       // Wrong username or password

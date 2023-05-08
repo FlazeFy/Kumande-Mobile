@@ -111,6 +111,62 @@ String getMessageResponseFromObject(val) {
         res += "${bornErr.join('\n')}";
       }
     }
+    if (val.containsKey('list_name') != null) {
+      var lsname = val['list_name'];
+
+      if (lsname != null) {
+        res += "${lsname.join('\n')}";
+      }
+    }
+    if (val.containsKey('list_desc') != null) {
+      var lsdesc = val['list_desc'];
+
+      if (lsdesc != null) {
+        res += "${lsdesc.join('\n')}";
+      }
+    }
+    if (val.containsKey('list_desc') != null) {
+      var lsdesc = val['list_desc'];
+
+      if (lsdesc != null) {
+        res += "${lsdesc.join('\n')}";
+      }
+    }
+    if (val.containsKey('consume_name') != null) {
+      var csmName = val['consume_name'];
+
+      if (csmName != null) {
+        res += "${csmName.join('\n')}";
+      }
+    }
+    if (val.containsKey('consume_comment') != null) {
+      var csmComment = val['consume_comment'];
+
+      if (csmComment != null) {
+        res += "${csmComment.join('\n')}";
+      }
+    }
+    if (val.containsKey('payment_price') != null) {
+      var csmPrice = val['payment_price'];
+
+      if (csmPrice != null) {
+        res += "${csmPrice.join('\n')}";
+      }
+    }
+    if (val.containsKey('schedule_consume') != null) {
+      var schConsume = val['schedule_consume'];
+
+      if (schConsume != null) {
+        res += "${schConsume.join('\n')}";
+      }
+    }
+    if (val.containsKey('schedule_desc') != null) {
+      var schdesc = val['schedule_desc'];
+
+      if (schdesc != null) {
+        res += "${schdesc.join('\n')}";
+      }
+    }
     return res;
   }
 }
