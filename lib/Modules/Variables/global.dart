@@ -84,7 +84,7 @@ List<String> optionsConsumePaymentMethod = [
 List<Map<String, dynamic>> selectedTagConsume = [];
 List<Map<String, dynamic>> selectedTagConsumeList = [];
 List<String> selectedProvideList = [];
-List<String> provideList = [];
+List<Map<String, dynamic>> provideList = [];
 
 List<Map<String, dynamic>> tagListDummy = [
   {"slug_name": "cheap", "tag_name": "Cheap"},

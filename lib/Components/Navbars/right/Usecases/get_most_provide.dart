@@ -54,10 +54,16 @@ class _GetConsumeProvideState extends State<GetConsumeProvide> {
                     }
                   }
                   if (!found) {
-                    provideList.add(e.ctx);
+                    provideList.add({
+                      "slug_name": e.ctx,
+                      "tag_name": "${e.ctx} (${e.total})"
+                    });
                   }
                 } else {
-                  provideList.add(e.ctx);
+                  provideList.add({
+                    "slug_name": e.ctx,
+                    "tag_name": "${e.ctx} (${e.total})"
+                  });
                 }
               }
             }
@@ -71,7 +77,7 @@ class _GetConsumeProvideState extends State<GetConsumeProvide> {
     );
   }
 
-  Widget _buildListView(List<String> contents) {
+  Widget _buildListView(List<Map<String, dynamic>> contents) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       generateTag(contents, _refreshPage, "tag_consume_filter"),
       generateSelectedTag(

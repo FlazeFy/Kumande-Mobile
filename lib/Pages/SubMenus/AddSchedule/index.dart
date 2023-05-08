@@ -6,6 +6,7 @@ import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Components/Navbars/top.dart';
 import 'package:kumande/Modules/APIs/Models/Schedule/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/Schedule/Commands/commands.dart';
+import 'package:kumande/Modules/Firebases/Firestores/Schedule/schedule.dart';
 import 'package:kumande/Modules/Helpers/validator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
@@ -25,12 +26,15 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
   var consumeProvider = TextEditingController();
   int consumeCalCtrl = 120;
   DateTime scheduleTime;
+
   ScheduleCommandsService apiService;
+  ScheduleCommandsFirestore fireService;
 
   @override
   void initState() {
     super.initState();
     apiService = ScheduleCommandsService();
+    fireService = ScheduleCommandsFirestore();
   }
 
   @override
@@ -101,43 +105,57 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                 scheduleConsume: scheduleConsume.text,
                 consumeType: slctConsumeType,
                 scheduleDesc: scheduleDesc.text,
-                consumeDetail: jsonEncode(detail),
-                scheduleTag: jsonEncode(selectedTagConsume),
-                scheduleTime: jsonEncode(time));
+                consumeDetail: detail,
+                scheduleTag: selectedTagConsumeList,
+                scheduleTime: time);
 
-            //Validator
-            if (data.scheduleConsume.isNotEmpty &&
-                data.consumeType.isNotEmpty) {
-              apiService.addSchedule(data).then((response) {
-                setState(() => _isLoading = false);
-                var status = response[0]['status'];
-                var body = response[0]['body'];
+            // Firebase
+            try {
+              var res = await fireService.addSchedule(data);
+              data.fireId = res;
+              data.consumeDetail = jsonEncode(detail);
+              data.scheduleTag = jsonEncode(selectedTagConsumeList);
+              data.scheduleTime = jsonEncode(time);
 
-                if (status == "success") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BottomBar()),
-                  );
-                  setState(() {
-                    page = 2;
-                  });
-                } else {
-                  showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          FailedDialog(text: body));
+              // API
+              if (data.scheduleConsume.isNotEmpty &&
+                  data.consumeType.isNotEmpty) {
+                apiService.addSchedule(data).then((response) {
+                  setState(() => _isLoading = false);
+                  var status = response[0]['status'];
+                  var body = response[0]['body'];
 
-                  scheduleDesc.clear();
-                  scheduleConsume.clear();
-                  consumeMainIng.clear();
-                  consumeProvider.clear();
-                }
-              });
-            } else {
+                  if (status == "success") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BottomBar()),
+                    );
+                    setState(() {
+                      page = 2;
+                    });
+                  } else {
+                    showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            FailedDialog(text: body));
+
+                    scheduleDesc.clear();
+                    scheduleConsume.clear();
+                    consumeMainIng.clear();
+                    consumeProvider.clear();
+                  }
+                });
+              } else {
+                showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => FailedDialog(
+                        text: "Add schedule, some field can't be empty"));
+              }
+            } catch (error) {
               showDialog<String>(
                   context: context,
-                  builder: (BuildContext context) => FailedDialog(
-                      text: "Add schedule, some field can't be empty"));
+                  builder: (BuildContext context) => FailedDialog(text: error));
             }
           } else {
             showDialog<String>(

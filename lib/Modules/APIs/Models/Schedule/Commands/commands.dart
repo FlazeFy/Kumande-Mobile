@@ -2,6 +2,7 @@ import 'dart:convert';
 
 // Usecase add schedule
 class AddScheduleModel {
+  String fireId;
   String scheduleConsume;
   String consumeType;
   String scheduleDesc; // Nullable
@@ -12,7 +13,8 @@ class AddScheduleModel {
   var scheduleTime;
 
   AddScheduleModel(
-      {this.scheduleConsume,
+      {this.fireId,
+      this.scheduleConsume,
       this.consumeType,
       this.scheduleDesc,
       this.consumeDetail,
@@ -21,6 +23,7 @@ class AddScheduleModel {
 
   Map<String, dynamic> toJson() {
     return {
+      "firebase_id": fireId,
       "schedule_consume": scheduleConsume,
       "consume_type": consumeType,
       "consume_detail": consumeDetail,
