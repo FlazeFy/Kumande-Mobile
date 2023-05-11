@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:kumande/Components/Dialogs/failed.dart';
 import 'package:kumande/Components/Forms/input.dart';
+import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Components/Typography/text.dart';
+import 'package:kumande/Modules/APIs/Models/User/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Models/User/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Services/User/Commands/commands.dart';
 import 'package:kumande/Modules/APIs/Services/User/Queries/queries.dart';
+import 'package:kumande/Modules/Helpers/validator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -16,6 +21,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   QueriesUserService apiService;
+  UserCommandsService commandService;
   final fullnameCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   DateTime dateBornCtrl;
@@ -25,6 +31,7 @@ class _EditProfileState extends State<EditProfile> {
   void initState() {
     super.initState();
     apiService = QueriesUserService();
+    commandService = UserCommandsService();
   }
 
   @override
@@ -59,6 +66,7 @@ class _EditProfileState extends State<EditProfile> {
     passwordCtrl.text = contents[0].password;
     passwordCtrl.text = contents[0].password;
     dateBornCtrl ??= DateTime.parse(contents[0].bornAt);
+    bool _isLoading = false;
 
     return Container(
       margin: EdgeInsets.only(
@@ -110,7 +118,57 @@ class _EditProfileState extends State<EditProfile> {
                   ],
                 )
               ],
-            )
+            ),
+            Container(
+                margin: const EdgeInsets.only(top: 10),
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      )),
+                      backgroundColor:
+                          MaterialStatePropertyAll<Color>(successBg),
+                    ),
+                    onPressed: () async {
+                      EditUserModel data = EditUserModel(
+                          fullname: fullnameCtrl.text.trim(),
+                          password: passwordCtrl.text.trim(),
+                          gender: genderCtrl,
+                          dateBorn: validateDate(dateBornCtrl));
+
+                      //Validator
+                      if (data.fullname.isNotEmpty &&
+                          data.password.isNotEmpty) {
+                        commandService.editUser(data).then((response) {
+                          setState(() => _isLoading = false);
+                          var status = response[0]['message'];
+                          var body = response[0]['body'];
+
+                          if (status == "success") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BottomBar()),
+                            );
+                          } else {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    FailedDialog(text: body));
+                          }
+                        });
+                      } else {
+                        showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => FailedDialog(
+                                text:
+                                    "Edit account failed, field can't be empty"));
+                      }
+                    },
+                    child: const Text("Save Changes",
+                        style: TextStyle(fontSize: 15))))
           ]),
     );
   }

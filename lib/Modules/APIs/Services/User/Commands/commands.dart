@@ -44,4 +44,42 @@ class UserCommandsService {
       ];
     }
   }
+
+  Future<List<Map<String, dynamic>>> editUser(EditUserModel data) async {
+    final header = {
+      'Accept': 'application/json',
+      'content-type': 'application/json',
+    };
+
+    final response = await client.put(
+      Uri.parse("$baseUrl/api/v1/user/edit"),
+      headers: header,
+      body: editUserModelToJson(data),
+    );
+
+    var responseData = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      return [
+        {
+          "message": "success",
+          "body": responseData['message'],
+        }
+      ];
+    } else if (response.statusCode == 422) {
+      // Validation failed
+      return [
+        {"message": "failed", "body": responseData['result'], "token": null}
+      ];
+    } else if (response.statusCode == 401) {
+      // Wrong username or password
+      return [
+        {"message": "failed", "body": responseData['message'], "token": null}
+      ];
+    } else {
+      return [
+        {"message": "failed", "body": "Unknown error", "token": null}
+      ];
+    }
+  }
 }

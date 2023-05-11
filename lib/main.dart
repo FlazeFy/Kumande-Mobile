@@ -20,7 +20,6 @@ Future<void> main() async {
   }
 
   String token = await FirebaseMessaging.instance.getToken();
-  print('FCM Registration Token: $token');
 
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -70,6 +69,8 @@ Future<void> main() async {
   if (prefs.containsKey("token_key")) {
     runApp(MyApp(signed: true));
   } else {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token_fcm_key', token);
     runApp(MyApp(signed: false));
   }
 }

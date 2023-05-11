@@ -11,6 +11,9 @@ class ScheduleCommandsService {
   Future<List<Map<String, dynamic>>> addSchedule(AddScheduleModel data) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token_key');
+    final tokenFCM = prefs.getString('token_fcm_key');
+
+    data.tokenFCM = tokenFCM;
     final header = {
       'Accept': 'application/json',
       'content-type': 'application/json',

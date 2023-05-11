@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-// Usecase add consume
+// Usecase add user
 class AddUserModel {
   String firebaseId;
   String fullname;
@@ -36,6 +36,30 @@ class AddUserModel {
 }
 
 String addUserModelToJson(AddUserModel data) {
+  final jsonData = data.toJson();
+  return json.encode(jsonData);
+}
+
+// Usecase edit user
+class EditUserModel {
+  String fullname;
+  String password;
+  String gender;
+  String dateBorn;
+
+  EditUserModel({this.fullname, this.password, this.gender, this.dateBorn});
+
+  Map<String, dynamic> toJson() {
+    return {
+      "fullname": fullname,
+      "password": password,
+      "gender": gender,
+      "born_at": dateBorn
+    };
+  }
+}
+
+String editUserModelToJson(EditUserModel data) {
   final jsonData = data.toJson();
   return json.encode(jsonData);
 }

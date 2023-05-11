@@ -5,6 +5,7 @@ class AddConsumeModel {
   String consumeType;
   String consumeName;
   String fireId;
+  String tokenFCM;
   var consumeDetail; // Array
   String consumeFrom;
   int isFavorite; // Bool
@@ -17,6 +18,7 @@ class AddConsumeModel {
   AddConsumeModel(
       {this.consumeType,
       this.fireId,
+      this.tokenFCM,
       this.consumeName,
       this.consumeDetail,
       this.consumeFrom,
@@ -31,6 +33,7 @@ class AddConsumeModel {
     return {
       "consume_type": consumeType,
       "firebase_id": fireId,
+      "token_fcm": tokenFCM,
       "consume_name": consumeName,
       "consume_detail": consumeDetail,
       "consume_from": consumeFrom,

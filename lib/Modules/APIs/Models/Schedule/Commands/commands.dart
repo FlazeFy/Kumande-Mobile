@@ -3,6 +3,7 @@ import 'dart:convert';
 // Usecase add schedule
 class AddScheduleModel {
   String fireId;
+  String tokenFCM;
   String scheduleConsume;
   String consumeType;
   String scheduleDesc; // Nullable
@@ -14,6 +15,7 @@ class AddScheduleModel {
 
   AddScheduleModel(
       {this.fireId,
+      this.tokenFCM,
       this.scheduleConsume,
       this.consumeType,
       this.scheduleDesc,
@@ -24,6 +26,7 @@ class AddScheduleModel {
   Map<String, dynamic> toJson() {
     return {
       "firebase_id": fireId,
+      "token_fcm": tokenFCM,
       "schedule_consume": scheduleConsume,
       "consume_type": consumeType,
       "consume_detail": consumeDetail,
