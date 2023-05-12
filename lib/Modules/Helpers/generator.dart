@@ -146,5 +146,11 @@ String getDateText(DateTime date, String type, String view) {
     } else {
       return "Set Time $type";
     }
+  } else if (view == "month") {
+    if (date != null) {
+      return DateFormat("MMM").format(date).toString();
+    } else {
+      return "Set Time $type";
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
 import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries.dart';
+import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -47,7 +48,8 @@ class _TotalDailyCalState extends State<TotalDailyCal> {
               chartData.add(lineData);
             });
 
-            return _buildListView(chartData);
+            return _buildListView(chartData,
+                getDateText(DateTime.now(), null, "month"), year.toString());
           } else {
             return const SizedBox();
           }
@@ -57,7 +59,7 @@ class _TotalDailyCalState extends State<TotalDailyCal> {
   }
 
   @override
-  Widget _buildListView(List<LineData> contents) {
+  Widget _buildListView(List<LineData> contents, String month, String year) {
     // double fullHeight = MediaQuery.of(context).size.height;
     // double fullWidth = MediaQuery.of(context).size.width;
 
@@ -69,7 +71,7 @@ class _TotalDailyCalState extends State<TotalDailyCal> {
         ),
         child: SfCartesianChart(
             primaryXAxis: CategoryAxis(),
-            title: ChartTitle(text: 'Total Daily Cal Apr 2023'),
+            title: ChartTitle(text: 'Total Daily Cal $month $year'),
             legend: Legend(isVisible: false),
             tooltipBehavior: TooltipBehavior(enable: true),
             series: <ChartSeries<LineData, String>>[

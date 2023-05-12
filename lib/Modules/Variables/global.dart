@@ -4,6 +4,7 @@ import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/HistoryPage/Usecases/get_all_consume_pagination.dart';
+import 'package:kumande/Pages/SubMenus/StatisticPage/index.dart';
 
 class PieData {
   PieData(this.xData, this.yData, [this.text]);
@@ -109,6 +110,13 @@ var tabcolHistoryConsume = [
   {"title": "Food", "class": GetAllConsumeWPagination(type: "Food")},
   {"title": "Drink", "class": GetAllConsumeWPagination(type: "Drink")},
   {"title": "Snack", "class": GetAllConsumeWPagination(type: "Snack")}
+];
+
+var tabcolStatistic = [
+  {"title": "Consume", "class": StatisticTabs(type: "consume")},
+  {"title": "Spending", "class": StatisticTabs(type: "spending")},
+  {"title": "Health", "class": StatisticTabs(type: "health")},
+  {"title": "Budget", "class": StatisticTabs(type: "budget")}
 ];
 
 // Calendar

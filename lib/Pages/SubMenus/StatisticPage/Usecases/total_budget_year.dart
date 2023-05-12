@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries_payment.dart';
-import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries_payment.dart';
+import 'package:kumande/Modules/APIs/Models/Budget/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Services/Budget/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class TotalSpending extends StatefulWidget {
-  const TotalSpending({Key key}) : super(key: key);
+class TotalBudget extends StatefulWidget {
+  const TotalBudget({Key key}) : super(key: key);
 
   @override
-  State<TotalSpending> createState() => _TotalSpendingState();
+  State<TotalBudget> createState() => _TotalBudgetState();
 }
 
-class _TotalSpendingState extends State<TotalSpending> {
+class _TotalBudgetState extends State<TotalBudget> {
   List<LineData> chartData = [];
-  QueriesPaymentService apiService;
+  QueriesBudgetService apiService;
 
   @override
   void initState() {
     super.initState();
-    apiService = QueriesPaymentService();
+    apiService = QueriesBudgetService();
   }
 
   @override
@@ -28,16 +28,16 @@ class _TotalSpendingState extends State<TotalSpending> {
     return SafeArea(
       maintainBottomViewPadding: false,
       child: FutureBuilder(
-        future: apiService.getTotalSpendMonth(year),
+        future: apiService.getAllBudget(year),
         builder: (BuildContext context,
-            AsyncSnapshot<List<QueriesPaymentLineChartModel>> snapshot) {
+            AsyncSnapshot<List<QueriesBudgetLineChartModel>> snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text(
                   "Something wrong with message: ${snapshot.error.toString()}"),
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
-            List<QueriesPaymentLineChartModel> contents = snapshot.data;
+            List<QueriesBudgetLineChartModel> contents = snapshot.data;
 
             contents.forEach((content) {
               String label = content.ctx;
@@ -68,7 +68,7 @@ class _TotalSpendingState extends State<TotalSpending> {
         ),
         child: SfCartesianChart(
             primaryXAxis: CategoryAxis(),
-            title: ChartTitle(text: 'Total Spending $year'),
+            title: ChartTitle(text: 'All Budget in $year'),
             legend: Legend(isVisible: false),
             tooltipBehavior: TooltipBehavior(enable: true),
             series: <ChartSeries<LineData, String>>[
