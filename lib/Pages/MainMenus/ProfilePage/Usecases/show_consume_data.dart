@@ -63,9 +63,7 @@ class _ShowConsumeDataState extends State<ShowConsumeData> {
 
     return Container(
       margin: EdgeInsets.only(
-          top: paddingContainerLG,
-          left: paddingContainerLG * 2,
-          right: paddingContainerLG * 2),
+          left: paddingContainerLG * 2, right: paddingContainerLG * 2),
       child: Row(children: [
         Container(
             padding: EdgeInsets.all(paddingContentSM),

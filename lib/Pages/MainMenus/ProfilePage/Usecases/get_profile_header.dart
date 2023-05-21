@@ -3,6 +3,7 @@ import 'package:kumande/Components/Containers/tag.dart';
 import 'package:kumande/Components/Others/image.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/MainMenus/ProfilePage/Usecases/edit_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowProfileHeader extends StatelessWidget {
@@ -37,8 +38,14 @@ class ShowProfileHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    getProfileImageSideBar(fullWidth, 0.35, image, gender),
-                    SizedBox(height: paddingContainerLG),
+                    Stack(alignment: Alignment.center, children: [
+                      Container(
+                          margin: const EdgeInsets.all(20),
+                          child: getProfileImageSideBar(
+                              fullWidth, 0.35, image, gender)),
+                      const EditImage()
+                    ]),
+                    SizedBox(height: paddingContentSM),
                     Text(username,
                         style: TextStyle(
                             color: whiteBg,

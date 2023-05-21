@@ -63,3 +63,21 @@ String editUserModelToJson(EditUserModel data) {
   final jsonData = data.toJson();
   return json.encode(jsonData);
 }
+
+// Usecase edit user image
+class EditUserImageModel {
+  String imageUrl;
+
+  EditUserImageModel({this.imageUrl});
+
+  Map<String, dynamic> toJson() {
+    return {
+      "image_url": imageUrl,
+    };
+  }
+}
+
+String editUserImageModelToJson(EditUserImageModel data) {
+  final jsonData = data.toJson();
+  return json.encode(jsonData);
+}

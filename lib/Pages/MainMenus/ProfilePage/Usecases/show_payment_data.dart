@@ -51,7 +51,7 @@ class _ShowPaymentDataState extends State<ShowPaymentData> {
 
     return Container(
       margin: EdgeInsets.only(
-          top: paddingContainerLG * 2,
+          top: paddingContainerLG * 1,
           left: paddingContainerLG * 2,
           right: paddingContainerLG * 2),
       child: Row(children: [

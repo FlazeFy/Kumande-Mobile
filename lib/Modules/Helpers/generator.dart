@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Forms/button.dart';
 import 'package:kumande/Components/Typography/text.dart';
@@ -153,4 +155,14 @@ String getDateText(DateTime date, String type, String view) {
       return "Set Time $type";
     }
   }
+}
+
+String getRandomString(int length) {
+  var chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  Random rnd = Random();
+
+  String.fromCharCodes(Iterable.generate(
+      length, (_) => chars.codeUnitAt(rnd.nextInt(chars.length))));
+
+  return chars;
 }

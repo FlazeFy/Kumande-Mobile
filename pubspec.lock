@@ -344,6 +344,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  full_screen_menu:
+    dependency: "direct main"
+    description:
+      name: full_screen_menu
+      sha256: a9d76608bc5ccfbbb26ffc92cd254addae611649660bd303faf56c5561950fb0
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   http:
     dependency: "direct main"
     description:
