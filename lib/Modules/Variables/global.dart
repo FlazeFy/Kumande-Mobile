@@ -1,5 +1,6 @@
 // Chart
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/style.dart';
@@ -178,3 +179,13 @@ class UserMiniProfile {
 
   UserMiniProfile({this.username, this.image, this.gender});
 }
+
+// Firebase
+String token;
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+  'high_importance_channel',
+  'High Importance Notifications',
+  description: 'This channel is used for important notifications.',
+  importance: Importance.high,
+);

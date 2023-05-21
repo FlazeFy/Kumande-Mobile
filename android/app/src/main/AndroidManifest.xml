@@ -33,6 +33,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/launch_background" />
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
         <receiver
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
             android:exported="false">
@@ -43,5 +46,10 @@
         </receiver>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <queries>
+        <intent>
+        <action android:name="android.intent.action.SENDTO" />
+        <data android:scheme="mailto" />
+        </intent>
+    </queries>
 </manifest>
