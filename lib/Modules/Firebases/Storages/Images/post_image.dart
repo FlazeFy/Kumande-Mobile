@@ -6,7 +6,7 @@ import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PostImage {
-  Future<String> sendImage(XFile imageFile) async {
+  Future<String> sendImageUser(XFile imageFile) async {
     final prefs = await SharedPreferences.getInstance();
     final id = prefs.getString('id_key');
     String url;
@@ -29,6 +29,7 @@ class PostImage {
     } else {
       url = null;
     }
+    await prefs.setString('image_key', url.toString());
 
     return url;
   }
