@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kumande/Modules/APIs/Models/Consume/Commands/commands.dart';
+import 'package:kumande/Modules/APIs/Consume/Models/Commands/commands.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ConsumeCommandsFirestore {

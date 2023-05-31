@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Typography/text.dart';
-import 'package:kumande/Modules/APIs/Models/Analytic/queries.dart';
-import 'package:kumande/Modules/APIs/Services/Analytic/queries.dart';
+import 'package:kumande/Modules/APIs/Analytic/Models/queries.dart';
+import 'package:kumande/Modules/APIs/Analytic/Services/queries.dart';
 import 'package:kumande/Modules/Helpers/converter.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 

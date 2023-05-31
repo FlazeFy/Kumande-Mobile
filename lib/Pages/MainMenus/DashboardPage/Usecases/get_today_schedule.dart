@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/dashboard.dart';
 import 'package:kumande/Components/Others/divider.dart';
-import 'package:kumande/Modules/APIs/Models/Schedule/Queries/queries.dart';
-import 'package:kumande/Modules/APIs/Services/Schedule/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Schedule/Models/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Schedule/Services/Queries/queries.dart';
 import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 

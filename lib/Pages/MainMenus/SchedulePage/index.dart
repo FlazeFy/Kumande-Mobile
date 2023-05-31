@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Forms/input.dart';
 import 'package:kumande/Components/Typography/text.dart';
-import 'package:kumande/Modules/APIs/Models/Schedule/Queries/queries.dart';
-import 'package:kumande/Modules/APIs/Services/Schedule/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Schedule/Models/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Schedule/Services/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 import 'package:kumande/Pages/MainMenus/SchedulePage/Usecases/get_daily_calorie.dart';

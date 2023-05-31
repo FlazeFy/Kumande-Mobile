@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Forms/input.dart';
 import 'package:kumande/Components/Typography/text.dart';
-import 'package:kumande/Modules/APIs/Services/Consume/Commands/commands_list.dart';
+import 'package:kumande/Modules/APIs/Consume/Services/Commands/commands_list.dart';
 import 'package:kumande/Modules/Helpers/generator.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';

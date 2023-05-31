@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Typography/text.dart';
-import 'package:kumande/Modules/APIs/Models/Count/Queries/queries_calorie.dart';
-import 'package:kumande/Modules/APIs/Services/Count/Queries/queries_calorie.dart';
+import 'package:kumande/Modules/APIs/Count/Models/Queries/queries_calorie.dart';
+import 'package:kumande/Modules/APIs/Count/Services/Queries/queries_calorie.dart';
 import 'package:kumande/Modules/Variables/style.dart';
 
 class ShowHealthData extends StatefulWidget {

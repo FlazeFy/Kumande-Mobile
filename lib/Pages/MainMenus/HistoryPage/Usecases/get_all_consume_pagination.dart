@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:kumande/Components/Containers/consume.dart';
-import 'package:kumande/Modules/APIs/Models/Consume/Queries/queries.dart';
-import 'package:kumande/Modules/APIs/Services/Consume/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Consume/Models/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Consume/Services/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 
 class GetAllConsumeWPagination extends StatefulWidget {

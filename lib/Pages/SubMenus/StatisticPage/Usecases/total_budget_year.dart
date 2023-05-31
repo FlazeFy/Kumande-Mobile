@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kumande/Modules/APIs/Models/Budget/Queries/queries.dart';
-import 'package:kumande/Modules/APIs/Services/Budget/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Budget/Models/Queries/queries.dart';
+import 'package:kumande/Modules/APIs/Budget/Services/Queries/queries.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
