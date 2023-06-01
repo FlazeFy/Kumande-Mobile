@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
 import 'package:kumande/Components/Navbars/bottom.dart';
 import 'package:kumande/Modules/Variables/global.dart';
 import 'package:kumande/Modules/Variables/style.dart';
@@ -134,16 +135,25 @@ class _MyApp extends State<MyApp> {
     ]);
 
     if (widget.signed) {
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Kumande Mobile',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const BottomBar(),
-      );
+      return FutureBuilder<String>(
+          future: FirebaseMessaging.instance.getToken(),
+          builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+            if (snapshot.hasData) {
+              String tokens = snapshot.data;
+              return GetMaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'Kumande Mobile',
+                theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                ),
+                home: const BottomBar(),
+              );
+            } else {
+              return const CircularProgressIndicator();
+            }
+          });
     } else {
-      return MaterialApp(
+      return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Kumande Mobile',
         theme: ThemeData(

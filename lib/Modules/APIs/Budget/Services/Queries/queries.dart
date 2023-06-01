@@ -1,5 +1,8 @@
+import 'package:get/get.dart';
 import 'package:http/http.dart' show Client;
 import 'package:kumande/Modules/APIs/Budget/Models/Queries/queries.dart';
+import 'package:kumande/Modules/Variables/style.dart';
+import 'package:kumande/Pages/Landings/LoginPage/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QueriesBudgetService {
@@ -20,6 +23,14 @@ class QueriesBudgetService {
     );
     if (response.statusCode == 200) {
       return queriesBudgetLineChartModelFromJson(response.body);
+    } else if (response.statusCode == 401) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.clear();
+
+      Get.offAll(() => const LoginPage());
+      Get.snackbar("Alert", "Session lost, please sign in again".tr,
+          backgroundColor: whiteBg);
+      return null;
     } else {
       return null;
     }
